@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply bg-body font-work;
+}
+.container-custom{
+    width: 100%;
+    padding: 0px 5.55553vw;
+}
+.heading-item{
+    position: relative;
+    overflow: hidden;
+}
+.heading-item > span > span,
+.heading-item > span{
+    position: relative;
+    display: inline-block;
+   
+}
+.heading-item > span:nth-child(1){
+    font-style: italic;
+}
+.heading-item > span:nth-child(2){
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+   
+}
+
+
+
+body, input, textarea, select, button {
+    font-synthesis: none;
+    -moz-font-feature-settings: 'kern';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    direction: ltr;
+    text-align: left;
+}
+
+
+html.lenis {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  .menu-offset{
+    transform: translateX(20%);
+    opacity: 0;
+  }
+  .anim-move{
+    clip-path: circle(0% at 50% 50vh);
+    z-index: 101;
+  }
+  .anim-move-next{
+    clip-path: circle(0% at 50% 50vh);
+    z-index: 101;
+  }
+
+  .anim-z-index > div:nth-child(1){
+    z-index: 999 !important;
+  }
