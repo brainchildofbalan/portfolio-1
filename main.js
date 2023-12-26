@@ -1,8 +1,12 @@
-import gsap, { Expo, Power0, Power2 } from 'gsap'
+import gsap, { Expo, Power0, Power2, Power4 } from 'gsap'
 import { CustomEase, Linear, Sine } from 'gsap/all';
 import Lenis from '@studio-freight/lenis'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+import Swiper from 'swiper';
+import { Controller, Navigation, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
 
 const animationWork = () => {
     const itemWork = document.querySelectorAll('.items-anim-work');
@@ -27,7 +31,7 @@ const animationWork = () => {
         itemWork.forEach(item => {
             const singleWord = item.querySelectorAll(`.heading-item > span`)[0]?.querySelectorAll('span');
             const line = item.querySelectorAll('.line-separator');
-            console.log(line);
+
             // console.log(singleWord);
             gsap.set(singleWord, { yPercent: 92 })
             gsap.set(singleWord, { yPercent: 92 })
@@ -96,9 +100,12 @@ const animationWork = () => {
 
 
 const rotationAnimation = () => {
-    const rotateFile = document.querySelector(`.rotate-anim`);
+    const rotateFile = document.querySelectorAll(`.rotate-anim`);
     const tl = gsap.timeline({ repeat: -1 });
     tl.to(rotateFile, { rotate: 360, duration: 10, ease: Linear.easeNone })
+
+
+
 }
 
 
@@ -120,6 +127,7 @@ const lenisScrollingAnim = () => {
     //     console.log(e)
     // })
 
+    window.lenis = lenis
     function raf(time) {
         lenis.raf(time)
         requestAnimationFrame(raf)
@@ -137,6 +145,12 @@ const marqueeScrolling = () => {
 
     const duration = 34;
     const marquees = document.querySelectorAll(".marquee");
+
+
+
+
+
+
     const tl = gsap.timeline({
         paused: true,
         repeat: -1,
@@ -146,6 +160,7 @@ const marqueeScrolling = () => {
         },
         scrollTrigger: {
             trigger: marquees[0],
+            // markers: true,
             onEnter: () => {
                 tl.play();
             },
@@ -184,6 +199,13 @@ const marqueeScrolling = () => {
             gsap.to(tl, { timeScale: direction });
         }
     });
+
+
+
+
+
+
+
 }
 
 
@@ -192,7 +214,7 @@ const mouseMoveAnimation = () => {
     const animOuter = document.querySelector('.hover-anim-outer');
     const animImg = document.querySelector('.anim-img');
 
-    console.log(animOuter.getBoundingClientRect())
+
 
 
     gsap.set(animImg, { opacity: 0, scale: .9, willChange: `transform` })
@@ -284,7 +306,7 @@ const animPin = () => {
 
     const animWrap = document.querySelector('.pin-wrapper');
     const animPin2Child = document.querySelector('.anim-pin2 > div');
-    console.log(animPin2Child)
+
 
     // animWrap.style.paddingBottom = `${animWrap.clientHeight / 2}px`
 
@@ -313,6 +335,9 @@ const animPin = () => {
             // markers: true,
             pinSpacing: true,
             scrub: true,
+            onLeave: () => {
+                ScrollTrigger.refresh()
+            }
         }
     });
 
@@ -343,6 +368,304 @@ const animPin = () => {
 
 }
 
+
+const swiperSliderAnimation = () => {
+    const swiperOne = new Swiper('.slider-one', {
+        // configure Swiper to use modules
+        modules: [Controller, Navigation, EffectFade],
+        effect: 'fade'
+
+
+    })
+
+
+    const swiperTwo = new Swiper('.slider-two', {
+        // configure Swiper to use modules
+        modules: [Controller, Navigation, EffectFade],
+        navigation: {
+            nextEl: '.next-swipe',
+            prevEl: '.prev-swipe',
+        },
+        effect: 'fade'
+
+    })
+
+    swiperOne.controller.control = swiperTwo
+    swiperTwo.controller.control = swiperOne
+
+
+}
+
+
+
+
+const parallaxAnimation = () => {
+
+    const animSelector = document.querySelectorAll('.anim-parallax');
+    const animSelectorWrap = document.querySelectorAll('.anim-parallax-wrap');
+    animSelector.forEach((item) => {
+        const itemAnim = item.querySelector('img');
+
+        const tlParallax = gsap.timeline({
+            scrollTrigger: {
+                trigger: animSelectorWrap,
+                start: `top+=100% bottom`,
+                end: `bottom+=100% top`,
+                // markers: true,
+                scrub: true,
+            }
+        })
+        // tlParallax.scrollTrigger.refresh()
+        tlParallax.to(itemAnim, { yPercent: 10 })
+
+        document.addEventListener('DOMNodeInserted', tlParallax.scrollTrigger.refresh(), false)
+        document.addEventListener('DOMNodeRemoved', tlParallax.scrollTrigger.refresh(), false)
+
+
+
+    })
+
+}
+
+
+
+const formHandling = () => {
+    // form-wrapper
+    // video-items
+
+
+
+
+    const fromInputMain = document.querySelector('.form-wrapper');
+    const fromInput = document.querySelector('.form-wrapper input');
+    const fromVideo = document.querySelectorAll('.video-items video');
+    const caseStudy = document.querySelector('.case-study');
+    const errorMessage = document.querySelector('.error-message');
+    const caseStudyTrigger = document.querySelector('.case-study-trigger');
+    const caseOverlay = document.querySelector('.case-overlay');
+
+    caseStudyTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        gsap.to(caseStudy, { autoAlpha: 1, scale: 1, pointerEvents: 'all', duration: .3 })
+        gsap.to(caseOverlay, { autoAlpha: .3, pointerEvents: 'all', duration: .3 })
+        caseOverlay
+        window?.lenis?.stop();
+        fromVideo[0].play();
+    })
+
+
+    caseOverlay.addEventListener('click', (e) => {
+        e.preventDefault();
+        gsap.to(caseStudy, { autoAlpha: 0, scale: .9, pointerEvents: 'none', duration: .3 })
+        gsap.to(caseOverlay, { autoAlpha: 0, pointerEvents: 'none', duration: .3 })
+        caseOverlay
+        window?.lenis?.stop();
+        fromVideo.forEach(element => { element.pause() });
+    })
+
+    let error = 0;
+
+
+
+
+    const playPauseVideo = (id) => {
+        fromVideo.forEach(element => {
+            element.pause()
+        });
+        fromVideo[id].play();
+    }
+
+    fromInput.addEventListener('input', (e) => {
+        // console.log(e.target.value, 'ok')
+        const lengthOfInput = e.target.value;
+        if (lengthOfInput.length > 0) {
+            gsap.to(caseStudy, { backgroundColor: `#BCFFEF` })
+            gsap.to(fromVideo, { autoAlpha: 0 })
+            gsap.to(fromVideo[1], { autoAlpha: 1 })
+            playPauseVideo(1)
+            errorMessage.innerHTML = ``
+        }
+        else {
+            if (error !== 1) {
+                gsap.to(caseStudy, { backgroundColor: `#CCEF92` })
+                gsap.to(fromVideo, { autoAlpha: 0 })
+                gsap.to(fromVideo[0], { autoAlpha: 1 })
+                playPauseVideo(0)
+            }
+
+        }
+    })
+
+
+
+
+
+
+    fromInputMain.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (fromInput.value.length < 4) {
+            error = 1;
+            errorMessage.innerHTML = `Minimum 4 words required`
+            gsap.to(fromVideo, { autoAlpha: 0 })
+            gsap.to(fromVideo[2], { autoAlpha: 1 })
+            playPauseVideo(2)
+
+        }
+
+        else if (fromInput.value !== 'heheheheisit?') {
+            error = 1;
+            errorMessage.innerHTML = `Password is wrong`
+            gsap.to(fromVideo, { autoAlpha: 0 })
+            gsap.to(fromVideo[2], { autoAlpha: 1 })
+            playPauseVideo(2)
+        }
+        else {
+            error = 0;
+            errorMessage.innerHTML = ``
+        }
+
+
+
+        if (error === 1) {
+            gsap.to(caseStudy, { backgroundColor: `#FFCACA` })
+        }
+
+        // console.log(error)
+    })
+
+
+
+
+}
+
+
+
+
+const videoWrapper = () => {
+    const pinVideo = document.querySelector('.video-pin');
+    const pinVideoOuter = document.querySelector('.pin-outer');
+    const pinVideoEnd = document.querySelector('.video-end');
+    const pinVideoEndVideo = document.querySelector('.video-end video');
+    pinVideoEndVideo.pause()
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: pinVideo,
+            pin: true,
+            // markers: true,
+            start: `center center`,
+            end: `100%`,
+        }
+    })
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: pinVideoOuter,
+            endTrigger: pinVideoEnd,
+            // markers: true,
+            start: `top-=30% center`,
+            end: `center center`,
+            scrub: 1,
+            onEnter: () => {
+                pinVideoEndVideo.play()
+                pinVideoEndVideo.currentTime = 0;
+
+            }
+        }
+    }).to(pinVideoEndVideo, { scale: 1 })
+
+
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: pinVideoOuter,
+            // markers: true,
+            start: `100%-=${pinVideoEndVideo.clientHeight / 2} center`,
+            end: `130%  bottom`,
+            scrub: 1,
+            onEnterBack: () => {
+                pinVideoEndVideo.play()
+                pinVideoEndVideo.currentTime = 0;
+                ScrollTrigger.refresh();
+            },
+            onLeave: () => {
+                pinVideoEndVideo.pause()
+            }
+        }
+    })
+        .to(pinVideoEndVideo, { scale: .5 })
+
+
+
+
+
+}
+
+
+const pulseAnimation = () => {
+    const pulseAnim = document.querySelector('.pulse-anim')
+    gsap.to(pulseAnim, {
+        scale: 1.12,
+        repeat: -1,
+        yoyo: true,
+        ease: Power0.easeNone,
+    });
+}
+
+
+const loadingLetter = () => {
+    window.lenis.stop();
+    const mainWrapper = document.querySelector(`main`);
+    const rotateFile1 = document.querySelector(`.rotate-anim-1`);
+    const maskImgWrap = document.querySelector(`.mask-img-wrap`);
+    const svgMask = document.querySelector(`.mask-svg`);
+    const svgMaskImg = document.querySelector(`.mask-svg img`);
+
+    const tl1 = gsap.timeline({});
+    const letters = document.querySelectorAll('.loading-letter');
+    const lettersFirst = document.querySelectorAll('.loading-letter > span');
+    const lettersSecond = document.querySelectorAll('.loading-letter > span > span');
+
+
+    letters.forEach((element, index) => {
+        const firstChild = element.querySelector
+        letters[index].style.height = `${lettersSecond[1].clientHeight}px`;
+
+    });
+    gsap.set(lettersFirst[1], { y: -lettersFirst[1].clientHeight + lettersSecond[1].clientHeight })
+    gsap.to(lettersFirst, { autoAlpha: 1 })
+    gsap.set(mainWrapper, { y: 400 })
+
+
+
+    setTimeout(() => {
+        tl1.to(rotateFile1, { rotate: 360, duration: 3, })
+        gsap.to(lettersFirst[0], { duration: 3, y: -lettersFirst[1].clientHeight + lettersSecond[1].clientHeight, ease: Power2.easeOut })
+        gsap.to(lettersFirst[1], { duration: 3, y: 0, ease: Power2.easeOut })
+        gsap.to(lettersFirst[2], {
+            duration: 3, y: -lettersFirst[1].clientHeight + lettersSecond[1].clientHeight, ease: Power2.easeOut, onComplete: () => {
+                gsap.to(maskImgWrap, { autoAlpha: 0 })
+                setTimeout(() => {
+                    gsap.to(svgMask, { yPercent: -100, transformOrigin: `top`, ease: Power4.easeOut, duration: 1.1 })
+                    gsap.to(svgMaskImg, {
+                        scaleY: 0, transformOrigin: `top`, ease: Power4.easeOut, duration: 1.1, onComplete: () => {
+                            window.lenis.start();
+
+                        }
+                    })
+                    gsap.to(mainWrapper, {
+                        duration: .6, y: 0, onComplete: () => {
+                            gsap.set(mainWrapper, { clearProps: "all" });
+                            ScrollTrigger.refresh()
+                        }
+                    })
+
+                }, 200);
+            }
+        })
+    }, 200);
+}
 window.addEventListener("load", () => {
 
 
@@ -350,12 +673,21 @@ window.addEventListener("load", () => {
 
     // console.log(gsap);
     lenisScrollingAnim();
+
+    loadingLetter();
+    videoWrapper();
+    marqueeScrolling();
     animationWork();
     rotationAnimation();
-    marqueeScrolling();
+
     mouseMoveAnimation();
-    menuAnimation()
-    animPin()
+    menuAnimation();
+    animPin();
+    swiperSliderAnimation();
+    parallaxAnimation();
+    formHandling();
+    pulseAnimation();
+
 
 
 

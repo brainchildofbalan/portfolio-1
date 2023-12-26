@@ -14,59 +14,190 @@
     <link rel="stylesheet" href="./main.css" />
   </head>
   <body class="bg-[#EAE9E6]">
+    <!-- Loading animation start -->
 
+    <div class="fixed w-full h-full flex justify-end items-end z-[99999999999] pointer-events-none">
+      <div class="absolute w-full h-full bg-[#171612] mask-svg will-change-transform">
+        <img src="./mask-svg.svg" alt="" class="w-full absolute bottom-0 left-0 translate-y-[99%] will-change-transform">
+      </div>
 
+      <div class="absolute bottom-[150px] right-[130px] flex items-center mask-img-wrap">
+        <div class="w-[5vw] h-[5vw] mr-[20px] translate-y-[20%]">
+          <img src="./loader.svg" alt="" class="w-[5vw] h-[5vw] rotate-anim-1 will-change-transform">
+        </div>
+        <div class="font-fly flex text-[7vw] mask-img">
+          <span class="flex text-[#CCEF92] translate-x-[30%] flex-col overflow-hidden loading-letter">
+            <span class="flex flex-col will-change-transform opacity-0">
+              <span class="leading-[130%] flex flex-col opacity-0">0</span>
+              <span class="leading-[130%] flex flex-col opacity-0">1</span>
+              <span class="leading-[130%] flex flex-col opacity-0">2</span>
+              <span class="leading-[130%] flex flex-col opacity-0">3</span>
+              <span class="leading-[130%] flex flex-col opacity-0">4</span>
+              <span class="leading-[130%] flex flex-col opacity-0">5</span>
+              <span class="leading-[130%] flex flex-col opacity-0">6</span>
+              <span class="leading-[130%] flex flex-col opacity-0">7</span>
+              <span class="leading-[130%] flex flex-col opacity-0">8</span>
+              <span class="leading-[130%] flex flex-col opacity-0">9</span>
+              <span class="leading-[130%] flex flex-col">1</span>
+            </span>
+          </span>
+          <span class="flex text-[#CCEF92] flex-col overflow-hidden loading-letter">
+            <span class="flex flex-col will-change-transform opacity-0">
+              <span class="leading-[130%] flex flex-col">0</span>
+              <span class="leading-[130%] flex flex-col">9</span>
+              <span class="leading-[130%] flex flex-col">8</span>
+              <span class="leading-[130%] flex flex-col">7</span>
+              <span class="leading-[130%] flex flex-col">6</span>
+              <span class="leading-[130%] flex flex-col">5</span>
+              <span class="leading-[130%] flex flex-col">4</span>
+              <span class="leading-[130%] flex flex-col">3</span>
+              <span class="leading-[130%] flex flex-col">2</span>
+              <span class="leading-[130%] flex flex-col">1</span>
+              <span class="leading-[130%] flex flex-col">0</span>
+            </span>
+          </span>
+          <span class="flex text-[#CCEF92] flex-col overflow-hidden loading-letter">
+            <span class="flex flex-col will-change-transform opacity-0">
+              <span class="leading-[130%] flex flex-col">0</span>
+              <span class="leading-[130%] flex flex-col">1</span>
+              <span class="leading-[130%] flex flex-col">2</span>
+              <span class="leading-[130%] flex flex-col">3</span>
+              <span class="leading-[130%] flex flex-col">4</span>
+              <span class="leading-[130%] flex flex-col">5</span>
+              <span class="leading-[130%] flex flex-col">6</span>
+              <span class="leading-[130%] flex flex-col">7</span>
+              <span class="leading-[130%] flex flex-col">8</span>
+              <span class="leading-[130%] flex flex-col">9</span>
+              <span class="leading-[130%] flex flex-col">0</span>
+            </span>
+          </span>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Loading animation end -->
 
     <!-- menu started  -->
     <div
-      class="w-full fixed left-0 top-0 h-full bg-black opacity-0 z-[999] menu-overlay pointer-events-none"
+      class="w-full fixed left-0 top-0 h-full bg-black opacity-0 z-[999999999] menu-overlay pointer-events-none"
     ></div>
-    <button class="w-auto flex items-center text-[16px] py-[20px] absolute right-[5.55553vw] z-[999999] menu-close opacity-0 pointer-events-none">
+    <button
+      class="w-auto flex items-center text-[16px] py-[20px] absolute right-[5.55553vw] z-[9999999999] menu-close opacity-0 pointer-events-none"
+    >
       <!-- <span class="mr-[12px]">Menu</span> -->
-      <div class="w-[32px] h-[32px] border rounded-full flex justify-center items-center border-[#9F9F9F] relative">
+      <div
+        class="w-[32px] h-[32px] border rounded-full flex justify-center items-center border-[#9F9F9F] relative"
+      >
         <div class="w-[12px] h-[12px] relative menu-icon">
-          <span class="absolute left-[50%] top-[50%] w-[4px] h-[4px] block translate-x-[-50%] translate-y-[-50%]">
-            <svg width="4" height="4" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative top-[-4px] left-[-4px]">
-              <rect x="0.371094" width="4" height="4" rx="0.5" fill="black"></rect>
+          <span
+            class="absolute left-[50%] top-[50%] w-[4px] h-[4px] block translate-x-[-50%] translate-y-[-50%]"
+          >
+            <svg
+              width="4"
+              height="4"
+              viewBox="0 0 4 3"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="relative top-[-4px] left-[-4px]"
+            >
+              <rect
+                x="0.371094"
+                width="4"
+                height="4"
+                rx="0.5"
+                fill="black"
+              ></rect>
             </svg>
           </span>
-          <span class="absolute left-[50%] top-[50%] w-[4px] h-[4px] block translate-x-[-50%] translate-y-[-50%]">
-            <svg width="4" height="4" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative top-[-4px] right-[-4px]">
-              <rect x="0.371094" width="4" height="4" rx="0.5" fill="black"></rect>
+          <span
+            class="absolute left-[50%] top-[50%] w-[4px] h-[4px] block translate-x-[-50%] translate-y-[-50%]"
+          >
+            <svg
+              width="4"
+              height="4"
+              viewBox="0 0 4 3"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="relative top-[-4px] right-[-4px]"
+            >
+              <rect
+                x="0.371094"
+                width="4"
+                height="4"
+                rx="0.5"
+                fill="black"
+              ></rect>
             </svg>
           </span>
-          <span class="absolute left-[50%] top-[50%] w-[4px] h-[4px] block translate-x-[-50%] translate-y-[-50%]">
-            <svg width="4" height="4" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative bottom-[-4px] left-[-4px]">
-              <rect x="0.371094" width="4" height="4" rx="0.5" fill="black"></rect>
+          <span
+            class="absolute left-[50%] top-[50%] w-[4px] h-[4px] block translate-x-[-50%] translate-y-[-50%]"
+          >
+            <svg
+              width="4"
+              height="4"
+              viewBox="0 0 4 3"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="relative bottom-[-4px] left-[-4px]"
+            >
+              <rect
+                x="0.371094"
+                width="4"
+                height="4"
+                rx="0.5"
+                fill="black"
+              ></rect>
             </svg>
           </span>
-          <span class="absolute left-[50%] top-[50%] w-[4px] h-[4px] block translate-x-[-50%] translate-y-[-50%]">
-            <svg width="4" height="4" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative bottom-[-4px] right-[-4px]">
-              <rect x="0.371094" width="4" height="4" rx="0.5" fill="black"></rect>
+          <span
+            class="absolute left-[50%] top-[50%] w-[4px] h-[4px] block translate-x-[-50%] translate-y-[-50%]"
+          >
+            <svg
+              width="4"
+              height="4"
+              viewBox="0 0 4 3"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="relative bottom-[-4px] right-[-4px]"
+            >
+              <rect
+                x="0.371094"
+                width="4"
+                height="4"
+                rx="0.5"
+                fill="black"
+              ></rect>
             </svg>
           </span>
         </div>
-        <div class="w-[25px] h-[25px] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] flex justify-center items-center opacity-0 menu-close-icon">
-          <span class="w-[16px] h-[2px] bg-[#000000] absolute rotate-45 block"></span>
-          <span class="w-[16px] h-[2px] bg-[#000000] absolute -rotate-45 block"></span>
+        <div
+          class="w-[25px] h-[25px] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] flex justify-center items-center opacity-0 menu-close-icon"
+        >
+          <span
+            class="w-[16px] h-[2px] bg-[#000000] absolute rotate-45 block"
+          ></span>
+          <span
+            class="w-[16px] h-[2px] bg-[#000000] absolute -rotate-45 block"
+          ></span>
         </div>
       </div>
     </button>
     <div
-      class="w-full fixed h-full max-w-[41.5vw] first-letter:fixed right-0 top-0 bg-[#EAE9E6] z-[9999] opacity-100 menu-wrap pointer-events-none menu-offset"
+      class="w-full fixed h-full max-w-[41.5vw] first-letter:fixed right-0 top-0 bg-[#EAE9E6] z-[999999999] opacity-100 menu-wrap pointer-events-none menu-offset"
     >
+      <!-- button start -->
 
-    <!-- button start -->
-    
-    <!-- button end -->
+      <!-- button end -->
 
-
-
-
-      <div class="w-full px-[3.33332vw] pt-[6.12vw] pb-[6.12vw] h-full flex flex-col ">
+      <div
+        class="w-full px-[3.33332vw] pt-[6.12vw] pb-[6.12vw] h-full flex flex-col"
+      >
         <ul class="menu-links-wrapper">
           <li class="mb-[2.2vw]">
-            <a class="font-fly text-[2.68vw] leading-[1.083] flex items-center" href="/">
+            <a
+              class="font-fly text-[2.68vw] leading-[1.083] flex items-center case-study-trigger"
+              href="/"
+            >
               <span
                 class="w-[40px] h-[40px] absolute left-0 rounded-full bg-[#171612] flex items-center justify-center scale-0 arrow-anim will-change-transform origin-right"
               >
@@ -75,9 +206,11 @@
               <span>Case Study</span></a
             >
           </li>
-          
+
           <li class="mb-[2.2vw]">
-            <a class="font-fly text-[2.68vw] leading-[1.083] flex items-center" href="/"
+            <a
+              class="font-fly text-[2.68vw] leading-[1.083] flex items-center"
+              href="/"
               ><span
                 class="w-[40px] h-[40px] absolute left-0 rounded-full bg-[#171612] flex items-center justify-center scale-0 arrow-anim will-change-transform origin-right"
               >
@@ -86,7 +219,9 @@
             >
           </li>
           <li class="mb-[2.2vw]">
-            <a class="font-fly text-[2.68vw] leading-[1.083] flex items-center" href="/"
+            <a
+              class="font-fly text-[2.68vw] leading-[1.083] flex items-center"
+              href="/"
               ><span
                 class="w-[40px] h-[40px] absolute left-0 rounded-full bg-[#171612] flex items-center justify-center scale-0 arrow-anim will-change-transform origin-right"
               >
@@ -95,7 +230,10 @@
             >
           </li>
           <li class="mb-[2.2vw]">
-            <a class="font-fly text-[2.68vw] leading-[1.083] flex items-center" href="/">
+            <a
+              class="font-fly text-[2.68vw] leading-[1.083] flex items-center"
+              href="/"
+            >
               <span
                 class="w-[40px] h-[40px] absolute left-0 rounded-full bg-[#171612] flex items-center justify-center scale-0 arrow-anim will-change-transform origin-right"
               >
@@ -104,7 +242,10 @@
             >
           </li>
           <li class="mb-[2.2vw]">
-            <a class="font-fly text-[2.68vw] leading-[1.083] flex items-center" href="/">
+            <a
+              class="font-fly text-[2.68vw] leading-[1.083] flex items-center"
+              href="/"
+            >
               <span
                 class="w-[40px] h-[40px] absolute left-0 rounded-full bg-[#171612] flex items-center justify-center scale-0 arrow-anim will-change-transform origin-right"
               >
@@ -114,76 +255,88 @@
           </li>
         </ul>
 
-        
         <div class="w-full relative flex flex-col mt-auto">
           <div class="w-full relative flex">
             <div class="w-full flex-1 flex items-end">
-
-
-              <a href="mailto:gauthamreghu01@gmail.com" class="text-[#171612] text-[1.388888vw] pb-[0px] relative">
+              <a
+                href="mailto:gauthamreghu01@gmail.com"
+                class="text-[#171612] text-[1.388888vw] pb-[0px] relative"
+              >
                 <span>gauthamreghu01@gmail.com</span>
-                <span class="w-full h-[1px] absolute left-0 bottom-[0px] bg-[#171612]"></span>
+                <span
+                  class="w-full h-[1px] absolute left-0 bottom-[0px] bg-[#171612]"
+                ></span>
               </a>
-
-
-
             </div>
             <div class="w-auto">
-
-              <ul class="w-full flex flex-col items-start invert text-white [&>*:last-child]:mb-0 menu-links-wrapper-social">
+              <ul
+                class="w-full flex flex-col items-start invert text-white [&>*:last-child]:mb-0 menu-links-wrapper-social"
+              >
                 <li class="mb-[24px]">
-                  <a href="" class="w-full flex items-start transition-opacity divide-gray-300 hover:opacity-100">
+                  <a
+                    href=""
+                    class="w-full flex items-start transition-opacity divide-gray-300 hover:opacity-100"
+                  >
                     <span>
                       <figure>
-                        <img src="./linkedin.svg" alt="">
+                        <img src="./linkedin.svg" alt="" />
                       </figure>
                     </span>
                     <span class="pl-[11px] text-[14px]">LINKEDIN</span>
                   </a>
                 </li>
                 <li class="mb-[24px]">
-                  <a href="" class="w-full flex items-start transition-opacity divide-gray-300 hover:opacity-100">
+                  <a
+                    href=""
+                    class="w-full flex items-start transition-opacity divide-gray-300 hover:opacity-100"
+                  >
                     <span>
                       <figure>
-                        <img src="./dribbble.svg" alt="">
+                        <img src="./dribbble.svg" alt="" />
                       </figure>
                     </span>
                     <span class="pl-[11px] text-[14px]">DRIBBBLE</span>
                   </a>
                 </li>
                 <li class="mb-[24px]">
-                  <a href="" class="w-full flex items-start transition-opacity divide-gray-300 hover:opacity-100">
+                  <a
+                    href=""
+                    class="w-full flex items-start transition-opacity divide-gray-300 hover:opacity-100"
+                  >
                     <span>
                       <figure>
-                        <img src="./behance.svg" alt="">
+                        <img src="./behance.svg" alt="" />
                       </figure>
                     </span>
                     <span class="pl-[11px] text-[14px]">BEHANCE</span>
                   </a>
                 </li>
                 <li class="mb-[24px]">
-                  <a href="" class="w-full flex items-start transition-opacity divide-gray-300 hover:opacity-100">
+                  <a
+                    href=""
+                    class="w-full flex items-start transition-opacity divide-gray-300 hover:opacity-100"
+                  >
                     <span>
                       <figure>
-                        <img src="./instagram.svg" alt="">
+                        <img src="./instagram.svg" alt="" />
                       </figure>
                     </span>
                     <span class="pl-[11px] text-[14px]">INSTAGRAM</span>
                   </a>
                 </li>
               </ul>
-
             </div>
           </div>
         </div>
       </div>
     </div>
 
-
     <!-- menu end  -->
 
-
-    <header class="w-full absolute left-0 top-0 bg-[#EAE9E6] z-[9999] backdrop-blur-md bg-opacity-40">
+    <header
+      class="w-full absolute left-0 top-0 will-change-transform"
+    >
+    <div class=" bg-[#EAE9E6] z-[9999] bg-opacity-40">
       <div class="container-custom">
         <div class="w-full flex justify-between border-b border-b-[#171612]">
           <div class="w-auto flex items-center">
@@ -193,7 +346,9 @@
               </figure>
             </a>
           </div>
-          <div class="w-auto flex items-center text-[16px] py-[20px] menu-click cursor-pointer">
+          <div
+            class="w-auto flex items-center text-[16px] py-[20px] menu-click cursor-pointer"
+          >
             <span class="mr-[12px]">Menu</span>
             <div
               class="w-[32px] h-[32px] border rounded-full flex justify-center items-center border-[#9F9F9F]"
@@ -284,19 +439,25 @@
           </div>
         </div>
       </div>
+    </div>
     </header>
     <main>
       <!-- section 1 into section-->
       <section class="w-full relative">
         <div class="container-custom">
           <div
-            class="w-full h-[59.4vh] flex items-end pb-[5.9vh] border-primary border-b-[4px]"
+            class="w-full relative min-h-[500px] flex items-end pb-[5.9vh] border-primary border-b-[4px]"
           >
             <h1
               class="font-fly text-[6.9vw] tracking-[2.6px] w-full max-w-[68vw] leading-[1.18]"
             >
               I'm Gautham Reghu a UI UX Designer
             </h1>
+
+            
+            <div class="w-[11.2vw] h-[11.2vw] absolute right-[1.3vw] bottom-[8vw]">
+              <img src="./rotate-img-banner.svg" class="w-full absolute rotate-anim will-change-transform" alt="">
+            </div>
           </div>
         </div>
       </section>
@@ -307,7 +468,7 @@
         <div class="container-custom">
           <div class="w-full aspect-[1280/564] relative">
             <img
-              src="./banner.jpg"
+              src="./profile.jpg"
               alt=""
               class="absolute left-0 top-0 w-full h-full object-cover object-center"
             />
@@ -328,12 +489,32 @@
             </div>
 
             <div class="w-full relative hover-anim-outer block">
-              <div class="w-[480px] absolute anim-img z-20 pointer-events-none overflow-hidden">
-                <div class="aspect-[480/360] image-scale-animation overflow-hidden">
-                  <img src="./work-set-1/1.jpg" alt="" class="absolute left-0 top-0 w-full h-full pointer-events-none">
-                  <img src="./work-set-1/2.jpg" alt="" class="absolute left-0 top-0 w-full h-full pointer-events-none">
-                  <img src="./work-set-1/3.jpg" alt="" class="absolute left-0 top-0 w-full h-full pointer-events-none">
-                  <img src="./work-set-1/4.jpg" alt="" class="absolute left-0 top-0 w-full h-full pointer-events-none">
+              <div
+                class="w-[480px] absolute anim-img z-20 pointer-events-none overflow-hidden"
+              >
+                <div
+                  class="aspect-[480/360] image-scale-animation overflow-hidden"
+                >
+                  <img
+                    src="./work-set-1/1.jpg"
+                    alt=""
+                    class="absolute left-0 top-0 w-full h-full pointer-events-none"
+                  />
+                  <img
+                    src="./work-set-1/2.jpg"
+                    alt=""
+                    class="absolute left-0 top-0 w-full h-full pointer-events-none"
+                  />
+                  <img
+                    src="./work-set-1/3.jpg"
+                    alt=""
+                    class="absolute left-0 top-0 w-full h-full pointer-events-none"
+                  />
+                  <img
+                    src="./work-set-1/4.jpg"
+                    alt=""
+                    class="absolute left-0 top-0 w-full h-full pointer-events-none"
+                  />
                 </div>
               </div>
               <div class="w-full relative flex flex-col">
@@ -528,9 +709,25 @@
 
       <!-- section 5 start -->
       <section class="w-full pt-[122px]">
-        <div class="container-custom">
-          <div class="w-full relative flex flex-col">
-            <div class="w-full aspect-[1280/600] bg-gray-500"></div>
+        <div class="w-full relative pin-outer">
+          <div class="w-full relative video-pin">
+            <div class="container-custom video-end">
+              <div class="w-full relative flex flex-col">
+                <div class="w-full aspect-[1280/600]">
+                  <video
+                    autoplay
+                    playsinline
+                    loop
+                    muted
+                    class="absolute top-0 left-0 w-full h-full object-cover scale-50"
+                  >
+                    <source src="./video/introVideo.mp4" type="video/mp4" />
+                    <!-- <source src="movie.ogg" type="video/ogg"> -->
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -584,7 +781,7 @@
                 <span>
                   <span>
                     <img
-                      class="inline-block w-[3.681vw] ml-[1.4vw] mr-[1.4vw] relative top-[-.6vw]"
+                      class="inline-block w-[3.681vw] ml-[1.4vw] mr-[1.4vw] relative top-[-.6vw] pulse-anim"
                       src="./love.svg"
                       alt=""
                     />
@@ -631,21 +828,22 @@
           <div class="w-full sticky top-0 z-20">
             <div class="w-full min-h-[100vh] flex items-center justify-center">
               <h5
-                class="font-fly text-[2.708334vw] max-w-[33vw] text-center mx-auto leading-[1.6] w-full"
+                class="font-fly text-[3.54167vw] max-w-[46vw] text-center mx-auto leading-[1.6] w-full"
               >
-                We’re in the payment solutions business – and in the “caring for
-                our customers” business.
+              Creativity isn't a destination reached with projects; it's a journey that unfolds endlessly.
               </h5>
             </div>
           </div>
 
-          <div class="w-full mx-auto max-w-[86vw] pb-[100vh]">
+          <div class="w-full mx-auto max-w-[86vw] pb-[100vh] overflow-hidden">
             <div
               class="relative flex flex-wrap -mx-[8.2vw] [&>*:nth-child(1)]:mb-[10.5vw] [&>*:nth-child(2)]:mb-[10.5vw] [&>*:nth-child(even)]:translate-y-[9.5vw] pb-[9.5vw]"
             >
               <div class="w-1/2 px-[8.2vw]">
                 <div class="w-full relative">
-                  <div class="aspect-[498/412] w-ful overflow-hidden image-anim">
+                  <div
+                    class="aspect-[498/412] w-ful overflow-hidden image-anim"
+                  >
                     <img
                       class="w-full h-full object-cover"
                       src="./work-set-2/01.jpg"
@@ -656,7 +854,9 @@
               </div>
               <div class="w-1/2 px-[8.2vw]">
                 <div class="w-full relative">
-                  <div class="aspect-[498/412] w-ful overflow-hidden image-anim">
+                  <div
+                    class="aspect-[498/412] w-ful overflow-hidden image-anim"
+                  >
                     <img
                       class="w-full h-full object-cover"
                       src="./work-set-2/02.jpg"
@@ -667,7 +867,9 @@
               </div>
               <div class="w-1/2 px-[8.2vw]">
                 <div class="w-full relative">
-                  <div class="aspect-[498/412] w-ful overflow-hidden image-anim">
+                  <div
+                    class="aspect-[498/412] w-ful overflow-hidden image-anim"
+                  >
                     <img
                       class="w-full h-full object-cover"
                       src="./work-set-2/03.jpg"
@@ -678,7 +880,9 @@
               </div>
               <div class="w-1/2 px-[8.2vw]">
                 <div class="w-full relative">
-                  <div class="aspect-[498/412] w-ful overflow-hidden image-anim">
+                  <div
+                    class="aspect-[498/412] w-ful overflow-hidden image-anim"
+                  >
                     <img
                       class="w-full h-full object-cover"
                       src="./work-set-2/04.jpg"
@@ -693,25 +897,34 @@
       </section>
       <!-- section 7 end -->
 
-
-
-
       <!-- section 8 -->
-
 
       <section class="flex flex-col scroll-pin-init-wrap overflow-hidden">
         <div class="w-[100vw] scroll-pin-init">
-          <div class="w-[100vw] h-[100vh] flex justify-center items-center relative anim-pin">
-            <h4 class=" text-[4.6vw] leading-[1.223] tracking-[.6px] font-fly translate-y-[-30vh]">
-                Want to know how I got here?
+          <div
+            class="w-[100vw] h-[100vh] flex justify-center items-center relative anim-pin"
+          >
+            <h4
+              class="text-[4.6vw] leading-[1.223] tracking-[.6px] font-fly translate-y-[-30vh]"
+            >
+              Want to know how I got here?
             </h4>
 
-            <div class="w-full h-full absolute left-0 top-0 bg-[#CCEF92] anim-move"></div>
-            <div class="w-full h-full absolute left-0 top-0 bg-[#FFFFFF] anim-move"></div>
-            <div class="w-full h-full absolute left-0 top-0 bg-[#1B0505] anim-move"></div>
-            <div class="w-full h-full absolute left-0 top-0 bg-[#CCEF92] anim-move"></div>
-            <div class="w-full h-full absolute left-0 top-0 bg-[#FFFFFF] anim-move"></div>
-
+            <div
+              class="w-full h-full absolute left-0 top-0 bg-[#CCEF92] anim-move"
+            ></div>
+            <div
+              class="w-full h-full absolute left-0 top-0 bg-[#FFFFFF] anim-move"
+            ></div>
+            <div
+              class="w-full h-full absolute left-0 top-0 bg-[#1B0505] anim-move"
+            ></div>
+            <div
+              class="w-full h-full absolute left-0 top-0 bg-[#CCEF92] anim-move"
+            ></div>
+            <div
+              class="w-full h-full absolute left-0 top-0 bg-[#FFFFFF] anim-move"
+            ></div>
           </div>
         </div>
       </section>
@@ -719,10 +932,12 @@
 
       <!-- section people behind  -->
 
-      <section class="w-full flex relative  overflow-hidden mt-[-100vh]">
+      <section class="w-full flex relative overflow-hidden mt-[-100vh]">
         <div class="w-full">
           <div class="w-full relative anim-z-index">
-            <div class="w-full absolute anim-pin3 anim-move-next z-10 py-[130px]">
+            <div
+              class="w-full absolute anim-pin3 anim-move-next z-10 py-[130px]"
+            >
               <div class="w-full container-custom relative flex">
                 <div class="w-5/12">
                   <div class="w-full max-w-[31vw] sticky top-[100px]">
@@ -735,23 +950,25 @@
                 </div>
               </div>
             </div>
-            <div class="w-full anim-pin2 anim-move-next bg-[#CCEF92] py-[130px]">
+            <div
+              class="w-full anim-pin2 anim-move-next bg-[#CCEF92] py-[130px]"
+            >
               <div class="w-full container-custom flex">
                 <div class="ml-auto w-5/12">
-                  <div class="w-full relative "></div>
+                  <div class="w-full relative"></div>
                 </div>
-                <div class="ml-auto w-7/12 ">
+                <div class="ml-auto w-7/12">
                   <div class="w-full relative pl-[16px] pin-wrapper">
                     <div
                       class="flex flex-wrap -mx-[20px] [&>*:nth-child(1)]:mb-[5.7vw] [&>*:nth-child(2)]:mb-[5.7vw] [&>*:nth-child(even)]:translate-y-[16.6vw] pb-[16.6vw]"
                     >
                       <div class="w-1/2">
-                        <div class="w-full px-[20px]">
+                        <div class="w-full px-[20px] anim-parallax">
                           <div
-                            class="w-full aspect-[345/416] bg-green-50 mb-[15px]"
+                            class="w-full aspect-[345/416] bg-green-50 mb-[15px] overflow-hidden"
                           >
                             <img
-                              class="w-full h-full object-cover"
+                              class="w-full h-full object-cover scale-[1.15] origin-bottom"
                               src="./mentors/01.jpg"
                               alt=""
                             />
@@ -771,13 +988,13 @@
                           </div>
                         </div>
                       </div>
-                      <div class="w-1/2">
-                        <div class="w-full px-[20px]">
+                      <div class="w-1/2 anim-parallax-wrap">
+                        <div class="w-full px-[20px] anim-parallax">
                           <div
-                            class="w-full aspect-[345/416] bg-green-50 mb-[15px]"
+                            class="w-full aspect-[345/416] bg-green-50 mb-[15px] overflow-hidden"
                           >
                             <img
-                              class="w-full h-full object-cover"
+                              class="w-full h-full object-cover scale-[1.15] origin-bottom"
                               src="./mentors/02.jpg"
                               alt=""
                             />
@@ -798,12 +1015,12 @@
                         </div>
                       </div>
                       <div class="w-1/2">
-                        <div class="w-full px-[20px]">
+                        <div class="w-full px-[20px] anim-parallax">
                           <div
-                            class="w-full aspect-[345/416] bg-green-50 mb-[15px]"
+                            class="w-full aspect-[345/416] bg-green-50 mb-[15px] overflow-hidden"
                           >
                             <img
-                              class="w-full h-full object-cover"
+                              class="w-full h-full object-cover scale-[1.15] origin-bottom"
                               src="./mentors/03.jpg"
                               alt=""
                             />
@@ -824,12 +1041,12 @@
                         </div>
                       </div>
                       <div class="w-1/2">
-                        <div class="w-full px-[20px]">
+                        <div class="w-full px-[20px] anim-parallax">
                           <div
-                            class="w-full aspect-[345/416] bg-green-50 mb-[15px]"
+                            class="w-full aspect-[345/416] bg-green-50 mb-[15px] overflow-hidden"
                           >
                             <img
-                              class="w-full h-full object-cover"
+                              class="w-full h-full object-cover scale-[1.15] origin-bottom"
                               src="./mentors/04.jpg"
                               alt=""
                             />
@@ -873,13 +1090,19 @@
 
             <div class="w-full relative flex flex-wrap">
               <div class="w-5/12">
-                <div class="w-full relative">
-                  <div class="slider-wrapper">
-                    <div class="slider-inner">
+                <div class="w-full relative swiper slider-two">
+                  <div class="slider-wrapper swiper-wrapper">
+                    <div class="slider-inner swiper-slide">
                       <div class="w-full">
                         <div
-                          class="w-full max-w-[140px] aspect-square bg-red-50 rounded-full overflow-hidden"
-                        ></div>
+                          class="w-full max-w-[140px] aspect-square bg-red-50 rounded-full overflow-hidden relative"
+                        >
+                          <img
+                            src="./testimonials/1.png"
+                            alt=""
+                            class="w-full h-full absolute left-0 top-0 object-cover"
+                          />
+                        </div>
                         <div class="w-full relative flex flex-col mt-[3.8vw]">
                           <h4
                             class="font-fly text-[4.6vw] leading-[1.223] tracking-[.4px] mb-[11px]"
@@ -895,6 +1118,110 @@
                         </div>
                       </div>
                     </div>
+                    <div class="slider-inner swiper-slide">
+                      <div class="w-full">
+                        <div
+                          class="w-full max-w-[140px] aspect-square bg-red-50 rounded-full overflow-hidden relative"
+                        >
+                          <img
+                            src="./testimonials/2.png"
+                            alt=""
+                            class="w-full h-full absolute left-0 top-0 object-cover"
+                          />
+                        </div>
+                        <div class="w-full relative flex flex-col mt-[3.8vw]">
+                          <h4
+                            class="font-fly text-[4.6vw] leading-[1.223] tracking-[.4px] mb-[11px]"
+                          >
+                            Midhun Raj R
+                          </h4>
+                          <p class="text-[#6B6A67]">
+                            Co-Founder
+                            <span class="text-[#171612] font-medium"
+                              >@Trizova Technologies</span
+                            >
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slider-inner swiper-slide">
+                      <div class="w-full">
+                        <div
+                          class="w-full max-w-[140px] aspect-square bg-red-50 rounded-full overflow-hidden relative"
+                        >
+                          <img
+                            src="./testimonials/3.png"
+                            alt=""
+                            class="w-full h-full absolute left-0 top-0 object-cover"
+                          />
+                        </div>
+                        <div class="w-full relative flex flex-col mt-[3.8vw]">
+                          <h4
+                            class="font-fly text-[4.6vw] leading-[1.223] tracking-[.4px] mb-[11px]"
+                          >
+                            Bijoy
+                          </h4>
+                          <p class="text-[#6B6A67]">
+                            CEO/Founder
+                            <span class="text-[#171612] font-medium"
+                              >@Qualnex</span
+                            >
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slider-inner swiper-slide">
+                      <div class="w-full">
+                        <div
+                          class="w-full max-w-[140px] aspect-square bg-red-50 rounded-full overflow-hidden relative"
+                        >
+                          <img
+                            src="./testimonials/4.png"
+                            alt=""
+                            class="w-full h-full absolute left-0 top-0 object-cover"
+                          />
+                        </div>
+                        <div class="w-full relative flex flex-col mt-[3.8vw]">
+                          <h4
+                            class="font-fly text-[4.6vw] leading-[1.223] tracking-[.4px] mb-[11px]"
+                          >
+                            Rohit Sajeev
+                          </h4>
+                          <p class="text-[#6B6A67]">
+                            Director
+                            <span class="text-[#171612] font-medium"
+                              >@Enfelista Technologies</span
+                            >
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slider-inner swiper-slide">
+                      <div class="w-full">
+                        <div
+                          class="w-full max-w-[140px] aspect-square bg-red-50 rounded-full overflow-hidden relative"
+                        >
+                          <img
+                            src="./testimonials/5.png"
+                            alt=""
+                            class="w-full h-full absolute left-0 top-0 object-cover"
+                          />
+                        </div>
+                        <div class="w-full relative flex flex-col mt-[3.8vw]">
+                          <h4
+                            class="font-fly text-[4.6vw] leading-[1.223] tracking-[.4px] mb-[11px]"
+                          >
+                            vishnu
+                          </h4>
+                          <p class="text-[#6B6A67]">
+                            CEO/Founder
+                            <span class="text-[#171612] font-medium"
+                              >@Outlayertattoo</span
+                            >
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -903,21 +1230,21 @@
                     class="w-full flex items-center justify-center max-w-[248px]"
                   >
                     <button
-                      class="w-[48px] h-[48px] border border-[#6B6A67] rounded-full flex justify-center items-center"
+                      class="swiper-arrow duration-300 transition-all disabled:opacity-25 rotate-180 bg-no-repeat bg-center swiper-arrow prev-swipe w-[48px] h-[48px] border border-[#6B6A67] rounded-full flex justify-center items-center"
                     ></button>
                     <span
                       class="w-full flex-1 mx-[24px] h-[1px] bg-[#171612]"
                     ></span>
                     <button
-                      class="w-[48px] h-[48px] border border-[#6B6A67] rounded-full flex justify-center items-center"
+                      class="swiper-arrow duration-300 transition-all disabled:opacity-25 bg-no-repeat bg-center next-swipe w-[48px] h-[48px] border border-[#6B6A67] rounded-full flex justify-center items-center"
                     ></button>
                   </div>
                 </div>
               </div>
               <div class="w-7/12">
-                <div class="w-full relative">
-                  <div class="slider-wrapper">
-                    <div class="slider-inner">
+                <div class="w-full relative slider-one swiper">
+                  <div class="slider-wrapper swiper-wrapper">
+                    <div class="slider-inner swiper-slide">
                       <div class="w-[64px] h-[64px]">
                         <img src="./quote.svg" alt="" />
                       </div>
@@ -931,6 +1258,69 @@
                         experience of our products. From concept to execution,
                         Gautham has shown an impressive ability to transform
                         ideas into captivating visual interfaces.
+                      </p>
+                    </div>
+                    <div class="slider-inner swiper-slide">
+                      <div class="w-[64px] h-[64px]">
+                        <img src="./quote.svg" alt="" />
+                      </div>
+                      <p
+                        class="text-[1.666666vw] leading-[1.8] pl-[10px] mt-[73px] tracking-[.068px]"
+                      >
+                        We have worked with Gautham to design an UI/UX for a
+                        Canadian real estate application. Gautham was quick to
+                        learn things and interacted with our client
+                        professionally. Collaborative, detail-oriented, and
+                        always exceeding expectations, he was truly a valuable
+                        asset to our team.
+                      </p>
+                    </div>
+                    <div class="slider-inner swiper-slide">
+                      <div class="w-[64px] h-[64px]">
+                        <img src="./quote.svg" alt="" />
+                      </div>
+                      <p
+                        class="text-[1.666666vw] leading-[1.8] pl-[10px] mt-[73px] tracking-[.068px]"
+                      >
+                        An invaluable member of my UI/ux design team, Gautham
+                        brings a perfect blend of incredible design skills to
+                        the table. His UI creations aren't just visually
+                        stunning; they seamlessly merge art with functionality
+                        in the digital realm. I'm exceptionally proud of
+                        Gautham's talent and eagerly anticipate the exciting
+                        places his creativity will take us!
+                      </p>
+                    </div>
+                    <div class="slider-inner swiper-slide">
+                      <div class="w-[64px] h-[64px]">
+                        <img src="./quote.svg" alt="" />
+                      </div>
+                      <p
+                        class="text-[1.666666vw] leading-[1.8] pl-[10px] mt-[73px] tracking-[.068px]"
+                      >
+                        I am thrilled to share my experience working with our
+                        talented Gautham UX/UI designer on our car washing
+                        dashboard project. The level of creativity demonstrated
+                        throughout the process was truly exceptional. Our design
+                        not only understood our vision but also brought it to
+                        life. in a way that exceeded our expectations.
+                      </p>
+                    </div>
+                    <div class="slider-inner swiper-slide">
+                      <div class="w-[64px] h-[64px]">
+                        <img src="./quote.svg" alt="" />
+                      </div>
+                      <p
+                        class="text-[1.666666vw] leading-[1.8] pl-[10px] mt-[73px] tracking-[.068px]"
+                      >
+                        Exceptional work! Gautham not only created a captivating
+                        logo that perfectly embodies our brand but also
+                        delivered an outstanding website. The attention to
+                        detail and creative flair showcased throughout the
+                        process were truly impressive. His talent and dedication
+                        have significantly elevated our online presence. I
+                        wholeheartedly recommend his services for anyone seeking
+                        top-notch design expertise.
                       </p>
                     </div>
                   </div>
@@ -1053,6 +1443,94 @@
         </div>
       </div>
     </footer>
+
+    <!-- case study popup -->
+    <div
+      class="w-full fixed left-0 top-0 h-full bg-black opacity-0 z-[999999999] case-overlay pointer-events-none"
+    ></div>
+
+    <div
+      class="w-full h-full fixed left-0 top-0 z-[9999999999] pointer-events-none"
+    >
+      <div
+        class="w-full h-full bg-[#CCEF92] absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50 max-w-[84.5vw] max-h-[80vh] p-[40px] case-study opacity-0 scale-90 pointer-events-none"
+      >
+        <div class="w-full relative flex flex-wrap h-full">
+          <div class="w-6/12 h-full overflow-hidden">
+            <div
+              class="w-full h-full flex items-center justify-center max-w-[35vw]"
+            >
+              <div
+                class="w-full aspect-[504/504] relative overflow-hidden video-items"
+              >
+                <video
+                  loop
+                  class="absolute top-0 left-0 w-full h-full object-cover mix-blend-multiply"
+                >
+                  <source src="./video/Sleep.mp4" type="video/mp4" />
+                  <!-- <source src="movie.ogg" type="video/ogg"> -->
+                  Your browser does not support the video tag.
+                </video>
+
+                <video
+                  loop
+                  class="absolute top-0 left-0 w-full h-full object-cover mix-blend-multiply opacity-0"
+                >
+                  <source src="./video/Happy.mp4" type="video/mp4" />
+                  <!-- <source src="movie.ogg" type="video/ogg"> -->
+                  Your browser does not support the video tag.
+                </video>
+
+                <video
+                  loop
+                  class="absolute top-0 left-0 w-full h-full object-cover mix-blend-multiply opacity-0"
+                >
+                  <source src="./video/Angry.mp4" type="video/mp4" />
+                  <!-- <source src="movie.ogg" type="video/ogg"> -->
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+          <div class="w-6/12 h-full">
+            <div class="w-full relative flex flex-col h-full justify-center">
+              <h4
+                class="font-fly text-[3.61111vw] max-w-[40vw] text-left leading-[1.21] w-full text-[#171612]"
+              >
+                Please Enter Password To View My Case Study
+              </h4>
+              <p
+                class="w-full relative mt-[1.3vw] max-w-[29.4vw] text-[1.25vw] text-[#171612]"
+              >
+                warnings Beware of the dearest Subramani enter at your own risk.
+              </p>
+
+              <div class="w-full mt-[3.4vw]">
+                <form action="" class="relative flex form-wrapper">
+                  <input
+                    type="text"
+                    class="w-[300px] min-h-[4.4446vw] bg-white p-[16px] focus:outline-none focus:shadow-none"
+                    placeholder="Enter Password"
+                  />
+                  <button
+                    class="w-[172px] min-h-[4.4446vw] bg-[#171612] items-center gap-[.75rem] text-white flex justify-center font-fly text-[20px] group"
+                  >
+                    <span>let's go</span>
+                    <span
+                      class="btn-arrow w-[18px] h-[13px] flex bg-no-repeat bg-center group-hover:translate-x-[6px] duration-300 transition-all"
+                    ></span>
+                  </button>
+                </form>
+                <div
+                  class="error-message text-[14px] font-medium text-red-500"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- case study popup end -->
   </body>
   <script src="./main.js" type="module"></script>
 </html>
