@@ -4,16 +4,34 @@ import Lenis from '@studio-freight/lenis'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 import Swiper from 'swiper';
-import { Controller, Navigation, EffectFade } from 'swiper/modules';
+import { Controller, Navigation, EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
+
+
+
+const textSplitting = (element) => {
+    var text = element.innerText;
+    var wordsArray = text.split(' ');
+    var newHTMLContent = wordsArray.map(function (word) {
+        return '<span class="inline-flex"><span class="inline-flex will-change-transform">' + word + '</span></span>';
+    }).join(' ');
+    element.innerHTML = newHTMLContent;
+}
+
+
+
+
+
+
 
 const animationWork = () => {
     const itemWork = document.querySelectorAll('.items-anim-work');
     const imageScale = document.querySelectorAll('.image-scale-animation img');
     let prevIndex = 0;
     let zIndex = 2
-    gsap.to(imageScale, { scale: 1.4, opacity: 0, willChange: `transform` })
+    gsap.to(imageScale, { scale: 1.4, autoAlpha: 0, willChange: `transform` })
     itemWork.forEach((item, index) => {
 
 
@@ -35,7 +53,7 @@ const animationWork = () => {
             // console.log(singleWord);
             gsap.set(singleWord, { yPercent: 92 })
             gsap.set(singleWord, { yPercent: 92 })
-            gsap.set(line, { opacity: .1 })
+            gsap.set(line, { autoAlpha: .1 })
         });
 
 
@@ -54,19 +72,19 @@ const animationWork = () => {
             if (title) {
                 gsap.to(title[0].querySelectorAll('span'), { yPercent: 0, stagger: .025, ease: Power2.easeInOut, duration: .4, willChange: `transform` })
                 gsap.to(title[1].querySelectorAll('span'), { yPercent: -92, stagger: .025, ease: Power2.easeInOut, duration: .4, willChange: `transform` })
-                gsap.to(line, { opacity: 1 })
+                gsap.to(line, { autoAlpha: 1 })
                 gsap.to(arrowAnim, { scale: 1, duration: .6, ease: Power2.easeInOut })
-                gsap.to(textAnim, { opacity: 1, x: -50, duration: .6, ease: Power2.easeInOut })
-                gsap.to(contextAnim, { opacity: 1, duration: .6, ease: Power2.easeInOut })
+                gsap.to(textAnim, { autoAlpha: 1, x: -50, duration: .6, ease: Power2.easeInOut })
+                gsap.to(contextAnim, { autoAlpha: 1, duration: .6, ease: Power2.easeInOut })
             }
 
 
             // image-scale-animation
             const timeline = gsap.timeline();
-            timeline.to(imageScale, { opacity: 0, scale: 1.21, duration: 0, zIndex: 0, filter: `blur(4px)`, })
-            timeline.to(imageScale[prevIndex], { scale: 1.02, opacity: 1, duration: 0 }, `<`)
+            timeline.to(imageScale, { autoAlpha: 0, scale: 1.21, duration: 0, zIndex: 0, filter: `blur(4px)`, })
+            timeline.to(imageScale[prevIndex], { scale: 1.02, autoAlpha: 1, duration: 0 }, `<`)
             timeline.to(imageScale[prevIndex], { zIndex: zIndex - 1, duration: 0 }, `<`)
-            timeline.to(imageScale[index], { scale: 1.02, opacity: 1, duration: .3 })
+            timeline.to(imageScale[index], { scale: 1.02, autoAlpha: 1, duration: .3 })
             timeline.to(imageScale[index], { zIndex: zIndex, duration: 0 }, `<`)
             timeline.to(imageScale[index], { filter: `blur(0px)` }, `<`)
             prevIndex = index;
@@ -86,10 +104,10 @@ const animationWork = () => {
             if (title) {
                 gsap.to(title[0].querySelectorAll('span'), { yPercent: 92, stagger: .025, ease: Power2.easeInOut, duration: .4, willChange: `transform` })
                 gsap.to(title[1].querySelectorAll('span'), { yPercent: 0, stagger: .025, ease: Power2.easeInOut, duration: .4, willChange: `transform` })
-                gsap.to(line, { opacity: .1 })
+                gsap.to(line, { autoAlpha: .1 })
                 gsap.to(arrowAnim, { scale: 0, duration: .6, ease: Power2.easeInOut })
-                gsap.to(textAnim, { opacity: .4, x: 0, duration: .6, ease: Power2.easeInOut })
-                gsap.to(contextAnim, { opacity: .4, duration: .6, ease: Power2.easeInOut })
+                gsap.to(textAnim, { autoAlpha: .4, x: 0, duration: .6, ease: Power2.easeInOut })
+                gsap.to(contextAnim, { autoAlpha: .4, duration: .6, ease: Power2.easeInOut })
             }
 
 
@@ -217,15 +235,15 @@ const mouseMoveAnimation = () => {
 
 
 
-    gsap.set(animImg, { opacity: 0, scale: .9, willChange: `transform` })
+    gsap.set(animImg, { autoAlpha: 0, scale: .9, willChange: `transform` })
 
     animOuter.addEventListener('mouseenter', (e) => {
         setTimeout(() => {
-            gsap.to(animImg, { opacity: 1, scale: 1 })
+            gsap.to(animImg, { autoAlpha: 1, scale: 1 })
         }, 100);
     })
     animOuter.addEventListener('mouseleave', (e) => {
-        gsap.to(animImg, { opacity: 0, scale: .9 })
+        gsap.to(animImg, { autoAlpha: 0, scale: .9 })
     })
 
     animOuter.addEventListener('mousemove', (e) => {
@@ -263,9 +281,9 @@ const menuAnimation = () => {
 
 
     const handleMenuOpen = () => {
-        gsap.to(menuOffset, { x: 0, opacity: 1, pointerEvents: `all` })
-        gsap.to(menuOverlay, { opacity: .4, pointerEvents: `all` })
-        gsap.to(menuTriggerClose, { duration: 0, pointerEvents: `all`, opacity: 1 })
+        gsap.to(menuOffset, { x: 0, autoAlpha: 1, pointerEvents: `all` })
+        gsap.to(menuOverlay, { autoAlpha: .4, pointerEvents: `all` })
+        gsap.to(menuTriggerClose, { duration: 0, pointerEvents: `all`, autoAlpha: 1 })
         gsap.to(menuIcon, { autoAlpha: 0 })
         gsap.to(menuIconClose, { autoAlpha: 1, delay: .2 })
         gsap.to(menuLinksWrapper, { duration: .8, autoAlpha: 1, x: 0, stagger: .08, delay: .015, ease: CustomEase.create("custom", "M0,0 C0.307,0.552 0.492,1 1,1 "), })
@@ -276,9 +294,9 @@ const menuAnimation = () => {
     }
 
     const handleMenuClose = () => {
-        gsap.to(menuOffset, { x: `20%`, opacity: 0, pointerEvents: `none` })
-        gsap.to(menuOverlay, { opacity: 0, pointerEvents: `none` })
-        gsap.to(menuTriggerClose, { duration: 0, pointerEvents: `none`, opacity: 0, delay: .3 })
+        gsap.to(menuOffset, { x: `20%`, autoAlpha: 0, pointerEvents: `none` })
+        gsap.to(menuOverlay, { autoAlpha: 0, pointerEvents: `none` })
+        gsap.to(menuTriggerClose, { duration: 0, pointerEvents: `none`, autoAlpha: 0, delay: .3 })
         gsap.to(menuIcon, { autoAlpha: 1 })
         gsap.to(menuIconClose, { autoAlpha: 0 })
         gsap.to(menuLinksWrapper, { autoAlpha: 0, x: 90 })
@@ -331,11 +349,12 @@ const animPin = () => {
         scrollTrigger: {
             trigger: animPin2,
             pin: animPin2,
-            end: '110%',
+            end: '90%',
             // markers: true,
             pinSpacing: true,
             scrub: true,
             onLeave: () => {
+                parallaxAnimation();
                 ScrollTrigger.refresh()
             }
         }
@@ -345,7 +364,7 @@ const animPin = () => {
         scrollTrigger: {
             trigger: animPin2,
             pin: animPin3,
-            end: `180%`,
+            end: `145%`,
             // markers: true,
             pinSpacing: true,
         }
@@ -363,8 +382,8 @@ const animPin = () => {
         }
     });
 
-    tl4.to(anim, { duration: .5, clipPath: `circle(120vw at 50% 50vh)`, stagger: { each: .05, }, ease: Power2.easeIn })
-    tl4.to(animNext, { duration: .5, clipPath: `circle(120vw at 50% 50vh)`, ease: Power2.easeIn }, `-=.42`)
+    tl4.to(anim, { duration: .5, clipPath: `circle(140vw at 50% 50vh)`, stagger: { each: .05, }, ease: Power2.easeIn })
+    tl4.to(animNext, { duration: .5, clipPath: `circle(140vw at 50% 50vh)`, ease: Power2.easeIn }, `-=.42`)
 
 }
 
@@ -372,8 +391,7 @@ const animPin = () => {
 const swiperSliderAnimation = () => {
     const swiperOne = new Swiper('.slider-one', {
         // configure Swiper to use modules
-        modules: [Controller, Navigation, EffectFade],
-        effect: 'fade'
+        modules: [Controller, Navigation],
 
 
     })
@@ -410,16 +428,16 @@ const parallaxAnimation = () => {
             scrollTrigger: {
                 trigger: animSelectorWrap,
                 start: `top+=100% bottom`,
-                end: `bottom+=100% top`,
+                end: `bottom+=150% top`,
                 // markers: true,
                 scrub: true,
             }
         })
         // tlParallax.scrollTrigger.refresh()
-        tlParallax.to(itemAnim, { yPercent: 10 })
+        tlParallax.to(itemAnim, { yPercent: 22, ease: Linear.easeNone })
 
-        document.addEventListener('DOMNodeInserted', tlParallax.scrollTrigger.refresh(), false)
-        document.addEventListener('DOMNodeRemoved', tlParallax.scrollTrigger.refresh(), false)
+        // document.addEventListener('DOMNodeInserted', tlParallax.scrollTrigger.refresh(), false)
+        // document.addEventListener('DOMNodeRemoved', tlParallax.scrollTrigger.refresh(), false)
 
 
 
@@ -442,7 +460,9 @@ const formHandling = () => {
     const caseStudy = document.querySelector('.case-study');
     const errorMessage = document.querySelector('.error-message');
     const caseStudyTrigger = document.querySelector('.case-study-trigger');
+    const modelClose = document.querySelector('.model-close');
     const caseOverlay = document.querySelector('.case-overlay');
+
 
     caseStudyTrigger.addEventListener('click', (e) => {
         e.preventDefault();
@@ -451,6 +471,15 @@ const formHandling = () => {
         caseOverlay
         window?.lenis?.stop();
         fromVideo[0].play();
+    })
+
+    modelClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        gsap.to(caseStudy, { autoAlpha: 0, scale: .9, pointerEvents: 'none', duration: .3 })
+        gsap.to(caseOverlay, { autoAlpha: 0, pointerEvents: 'none', duration: .3 })
+        caseOverlay
+        window?.lenis?.stop();
+        fromVideo.forEach(element => { element.pause() });
     })
 
 
@@ -549,52 +578,75 @@ const videoWrapper = () => {
     const pinVideoEndVideo = document.querySelector('.video-end video');
     pinVideoEndVideo.pause()
 
-    gsap.timeline({
-        scrollTrigger: {
-            trigger: pinVideo,
-            pin: true,
-            // markers: true,
-            start: `center center`,
-            end: `100%`,
-        }
-    })
-
-    gsap.timeline({
-        scrollTrigger: {
-            trigger: pinVideoOuter,
-            endTrigger: pinVideoEnd,
-            // markers: true,
-            start: `top-=30% center`,
-            end: `center center`,
-            scrub: 1,
-            onEnter: () => {
-                pinVideoEndVideo.play()
-                pinVideoEndVideo.currentTime = 0;
-
+    if (window.innerWidth > 767) {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: pinVideo,
+                pin: true,
+                // markers: true,
+                start: `center center`,
+                end: `100%`,
             }
-        }
-    }).to(pinVideoEndVideo, { scale: 1 })
+        })
 
 
 
-    gsap.timeline({
-        scrollTrigger: {
-            trigger: pinVideoOuter,
-            // markers: true,
-            start: `100%-=${pinVideoEndVideo.clientHeight / 2} center`,
-            end: `130%  bottom`,
-            scrub: 1,
-            onEnterBack: () => {
-                pinVideoEndVideo.play()
-                pinVideoEndVideo.currentTime = 0;
-                ScrollTrigger.refresh();
-            },
-            onLeave: () => {
-                pinVideoEndVideo.pause()
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: pinVideoOuter,
+                endTrigger: pinVideoEnd,
+                // markers: true,
+                start: `top-=30% center`,
+                end: `center center`,
+                scrub: .4,
+                onEnter: () => {
+                    pinVideoEndVideo.play()
+                    pinVideoEndVideo.currentTime = 0;
+
+                }
             }
-        }
-    })
-        .to(pinVideoEndVideo, { scale: .5 })
+        }).to(pinVideoEndVideo, { scale: 1 })
+
+
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: pinVideoOuter,
+                // markers: true,
+                start: `100%-=${pinVideoEndVideo.clientHeight / 2} center`,
+                end: `130%  bottom`,
+                scrub: .4,
+                onEnterBack: () => {
+                    pinVideoEndVideo.play()
+                    pinVideoEndVideo.currentTime = 0;
+                    ScrollTrigger.refresh();
+                },
+                onLeave: () => {
+                    pinVideoEndVideo.pause()
+                }
+            }
+        })
+            .to(pinVideoEndVideo, { scale: .5 })
+    }
+    else {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: pinVideoEnd,
+                endTrigger: pinVideoEnd,
+                // markers: true,
+                start: `top bottom`,
+                end: `bottom bottom`,
+                scrub: .4,
+                onEnter: () => {
+                    pinVideoEndVideo.play()
+                    pinVideoEndVideo.currentTime = 0;
+
+                }
+            }
+        }).to(pinVideoEndVideo, { scale: 1 })
+    }
+
 
 
 
@@ -627,6 +679,17 @@ const loadingLetter = () => {
     const lettersFirst = document.querySelectorAll('.loading-letter > span');
     const lettersSecond = document.querySelectorAll('.loading-letter > span > span');
 
+    const textMain = document.querySelector('.brak-text-into-multi-span');
+    textSplitting(textMain)
+
+
+
+
+    const textMainWrap = document.querySelectorAll('.brak-text-into-multi-span > span');
+    const textMainSpan = document.querySelectorAll('.brak-text-into-multi-span > span > span');
+    const lineAnimFade = document.querySelector('.line-anim-fade');
+    const imageFade = document.querySelector('.image-fade');
+
 
     letters.forEach((element, index) => {
         const firstChild = element.querySelector
@@ -635,7 +698,13 @@ const loadingLetter = () => {
     });
     gsap.set(lettersFirst[1], { y: -lettersFirst[1].clientHeight + lettersSecond[1].clientHeight })
     gsap.to(lettersFirst, { autoAlpha: 1 })
+    gsap.to(maskImgWrap, { autoAlpha: 1 })
+
     gsap.set(mainWrapper, { y: 400 })
+    gsap.set(textMainSpan, { yPercent: 100 })
+    gsap.set(textMainWrap, { overflow: `hidden` })
+    gsap.set(imageFade, { y: 40, autoAlpha: 0 })
+    gsap.set(lineAnimFade, { y: 30, autoAlpha: 0 })
 
 
 
@@ -661,11 +730,180 @@ const loadingLetter = () => {
                         }
                     })
 
+                    gsap.to(textMainSpan, { duration: 1.1, autoAlpha: 1, yPercent: -2, display: `inline-block`, stagger: .03, ease: Power2.easeOut })
+                    gsap.to(lineAnimFade, { duration: .6, y: 0, autoAlpha: 1, delay: .5 })
+                    gsap.to(imageFade, { duration: .6, y: 0, autoAlpha: 1, delay: .65 })
+
                 }, 200);
             }
         })
     }, 200);
 }
+
+
+
+const parallaxProfile = () => {
+    const parallaxProfile = document.querySelector('.parallax-profile img');
+    gsap.set(parallaxProfile, { scale: 1.1, yPercent: -10 })
+
+
+    const timeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: parallaxProfile,
+            start: `top bottom`,
+            end: `bottom top`,
+            // markers: true,
+            scrub: .2,
+        }
+    })
+
+    timeline.to(parallaxProfile, { scale: 1.1, yPercent: 10, ease: Linear.easeNone })
+
+}
+
+
+const waveAnimation = () => {
+    const wave = document.querySelector('.wave-wrap')
+    const waveAnim = document.querySelector('.wave-anim');
+    const wavedDribble = document.querySelector('.wave-dribble');
+    const waveRounded = document.querySelector('.wave-rounded');
+    const waveRotate = document.querySelector('.wave-rotate');
+    const waveText = document.querySelectorAll('.wave-text span');
+    const waveRotateWrap = document.querySelectorAll('.wave-rotate-wrap');
+    const waveLine = document.querySelectorAll('.wave-line');
+    const pulseAnimWrap = document.querySelectorAll('.pulse-anim-wrap');
+
+
+
+    gsap.set(wavedDribble, { autoAlpha: 0, scale: .5 })
+    gsap.set(waveRotateWrap, { autoAlpha: 0, scale: .5 })
+    gsap.set(pulseAnimWrap, { autoAlpha: 0, scale: .5 })
+    gsap.set(waveLine, { autoAlpha: 0, scaleX: .2, display: `inline-block` })
+    gsap.set(waveText, { autoAlpha: 1, yPercent: 100, display: `inline-block` });
+
+
+
+    const timeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: wave,
+            start: `top 80%`,
+            end: `bottom top`,
+            // markers: true,
+
+        }
+    })
+
+
+
+
+    timeline.to(waveText, { duration: .6, autoAlpha: 1, yPercent: 0, display: `inline-block`, stagger: .03, ease: Power2.easeOut })
+    timeline.to(waveAnim, { strokeDashoffset: 0, duration: 1.5 }, `<`)
+    timeline.to(waveRounded, { strokeDashoffset: 0, duration: 1.5 }, `<`)
+    timeline.to(wavedDribble, { autoAlpha: 1, scale: 1, duration: 1.5 }, `<`)
+    timeline.to(waveRotateWrap, { autoAlpha: 1, scale: 1, duration: 1.5 }, `<`)
+    timeline.to(pulseAnimWrap, { autoAlpha: 1, scale: 1, duration: 1.5 }, `<`)
+    timeline.to(waveLine, { autoAlpha: 1, scaleX: 1, duration: 1.5 }, `<`)
+
+
+    const timelineRotate = gsap.timeline({
+        scrollTrigger: {
+            trigger: wave,
+            start: `top 80%`,
+            end: `bottom top`,
+            // markers: true,
+            scrub: true,
+        }
+    })
+
+
+
+    timelineRotate.to(waveRotate, { rotate: 360 })
+
+    // wave-dribble
+    // wave-rounded
+}
+
+
+
+
+
+const textLandingAnimation = () => {
+    const animText = document.querySelectorAll('.text-landing-anim');
+    animText.forEach(element => {
+        textSplitting(element)
+    });
+
+
+
+
+    animText.forEach(item => {
+
+        const itemSpanWrap = item.querySelectorAll('span');
+        const itemSpan = item.querySelectorAll('span span');
+
+
+        gsap.set(itemSpanWrap, { overflow: `hidden` })
+        gsap.set(itemSpan, { yPercent: 100 })
+
+
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: item,
+                start: `top 80%`,
+                end: `bottom top`,
+                // markers: true,
+
+            }
+        })
+
+        timeline.to(itemSpan, { duration: .89, autoAlpha: 1, yPercent: 0, display: `inline-block`, stagger: .03, ease: Power2.easeOut })
+
+
+
+    });
+}
+
+
+
+const mobFadeAnim = () => {
+    const fadeAnim = document.querySelectorAll('.fade-anim-mob');
+    fadeAnim.forEach(element => {
+        gsap.set(element, { autoAlpha: 0, y: 30 })
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: element,
+                // markers: true,
+                start: `top 90%`
+            }
+        })
+        timeline.to(element, { autoAlpha: 1, y: 0, ease: Power2.easeOut })
+    });
+}
+
+
+
+const sliderMentors = () => {
+
+    const swiperOne = new Swiper('.slider-mentors', {
+        // configure Swiper to use modules
+        pagination: {
+            el: ".swiper-pagination",
+        },
+
+        slidesPerView: 1.4,
+        spaceBetween: 16,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+
+        modules: [Pagination, Autoplay],
+
+
+
+    })
+}
+
 window.addEventListener("load", () => {
 
 
@@ -673,21 +911,25 @@ window.addEventListener("load", () => {
 
     // console.log(gsap);
     lenisScrollingAnim();
-
+    parallaxProfile();
     loadingLetter();
     videoWrapper();
+    waveAnimation()
     marqueeScrolling();
-    animationWork();
+    window.innerWidth > 1023 && animationWork();
     rotationAnimation();
 
     mouseMoveAnimation();
     menuAnimation();
     animPin();
     swiperSliderAnimation();
-    parallaxAnimation();
+
     formHandling();
     pulseAnimation();
-
+    textLandingAnimation();
+    window.innerWidth < 767 && mobFadeAnim();
+    window.innerWidth < 1024 && sliderMentors()
+    window.addEventListener('resize', () => window.innerWidth < 1024 && sliderMentors())
 
 
 
