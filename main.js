@@ -904,6 +904,51 @@ const sliderMentors = () => {
     })
 }
 
+
+const videoUnmuteAnimation = () => {
+    const videoAnim = document.querySelector('.follow-animation-mouse');
+    const videoAnimSpan = document.querySelector('.follow-animation-mouse button > span');
+    gsap.set(videoAnim, { xPercent: -50, yPercent: -50, opacity: 0 });
+
+    const pos = { x: window.innerWidth, y: window.innerHeight };
+    const mouse = { x: pos.x, y: pos.y };
+    const speed = 0.35;
+
+    const xSet = gsap.quickSetter(videoAnim, "x", "px");
+    const ySet = gsap.quickSetter(videoAnim, "y", "px");
+
+    window.addEventListener("mousemove", (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+    });
+
+    gsap.ticker.add(() => {
+        const dt = 0.8 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+        pos.x += (mouse.x - pos.x) * dt;
+        pos.y += (mouse.y - pos.y) * dt;
+        xSet(pos.x);
+        ySet(pos.y);
+    });
+
+    let muted = true;
+    const pinVideoEndVideo = document.querySelector('.video-end video');
+    pinVideoEndVideo.addEventListener('click', () => {
+        muted = !muted
+        pinVideoEndVideo.muted = muted;
+        gsap.to(videoAnimSpan, { yPercent: !muted ? -50 : 0 })
+    })
+
+    pinVideoEndVideo.addEventListener('mouseenter', () => {
+        gsap.to(videoAnim, { opacity: 1 });
+    })
+
+    pinVideoEndVideo.addEventListener('mouseleave', () => {
+        gsap.to(videoAnim, { opacity: 0 });
+    })
+
+};
+
+
 window.addEventListener("load", () => {
 
 
@@ -931,7 +976,7 @@ window.addEventListener("load", () => {
     window.innerWidth < 1024 && sliderMentors()
     window.addEventListener('resize', () => window.innerWidth < 1024 && sliderMentors())
 
-
+    videoUnmuteAnimation();
 
 
 

@@ -121,3 +121,23 @@ html.lenis {
   .swiper-pagination-bullet{
     background-color: rgba(23, 22, 18, 0.243);
   }
+
+  .cursor-anim{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1050;
+    will-change: transform;
+    transition-property: transform;
+    transition: height 0.5s ease-out, background-color 0.5s ease, width 0.5s ease;
+    mix-blend-mode: difference;
+    
+  }
+  .cursor-anim button{
+    filter: invert(100%);
+  }
