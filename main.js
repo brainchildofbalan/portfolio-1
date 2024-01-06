@@ -309,6 +309,11 @@ const menuAnimation = () => {
     menuTrigger.addEventListener('click', handleMenuOpen)
     menuOverlay.addEventListener('click', handleMenuClose)
     menuTriggerClose.addEventListener('click', handleMenuClose)
+
+
+    return {
+        handleMenuClose
+    }
 }
 
 
@@ -382,8 +387,8 @@ const animPin = () => {
         }
     });
 
-    tl4.to(anim, { duration: .5, clipPath: `circle(140vw at 50% 50vh)`, stagger: { each: .05, }, ease: Power2.easeIn })
-    tl4.to(animNext, { duration: .5, clipPath: `circle(140vw at 50% 50vh)`, ease: Power2.easeIn }, `-=.42`)
+    tl4.to(anim, { duration: .5, clipPath: `circle(145vw at 50% 50vh)`, stagger: { each: .05, }, ease: Power2.easeIn })
+    tl4.to(animNext, { duration: .5, clipPath: `circle(145vw at 50% 50vh)`, ease: Power2.easeIn }, `-=.42`)
 
 }
 
@@ -462,15 +467,20 @@ const formHandling = () => {
     const caseStudyTrigger = document.querySelector('.case-study-trigger');
     const modelClose = document.querySelector('.model-close');
     const caseOverlay = document.querySelector('.case-overlay');
+    const menuAnim = menuAnimation()
 
+    fromVideo.forEach(element => {
+        element.volume = 0.1;
+    });
 
     caseStudyTrigger.addEventListener('click', (e) => {
         e.preventDefault();
         gsap.to(caseStudy, { autoAlpha: 1, scale: 1, pointerEvents: 'all', duration: .3 })
         gsap.to(caseOverlay, { autoAlpha: .3, pointerEvents: 'all', duration: .3 })
         caseOverlay
-        window?.lenis?.stop();
         fromVideo[0].play();
+        menuAnim.handleMenuClose()
+        window?.lenis?.stop();
     })
 
     modelClose.addEventListener('click', (e) => {
@@ -478,8 +488,14 @@ const formHandling = () => {
         gsap.to(caseStudy, { autoAlpha: 0, scale: .9, pointerEvents: 'none', duration: .3 })
         gsap.to(caseOverlay, { autoAlpha: 0, pointerEvents: 'none', duration: .3 })
         caseOverlay
-        window?.lenis?.stop();
+        window?.lenis?.start();
         fromVideo.forEach(element => { element.pause() });
+        fromInput.value = '';
+        gsap.to(fromVideo, { autoAlpha: 0 })
+        gsap.to(fromVideo[0], { autoAlpha: 1 })
+        gsap.to(caseStudy, { backgroundColor: `#CCEF92` })
+        errorMessage.innerHTML = ``
+
     })
 
 
@@ -488,8 +504,13 @@ const formHandling = () => {
         gsap.to(caseStudy, { autoAlpha: 0, scale: .9, pointerEvents: 'none', duration: .3 })
         gsap.to(caseOverlay, { autoAlpha: 0, pointerEvents: 'none', duration: .3 })
         caseOverlay
-        window?.lenis?.stop();
+        window?.lenis?.start();
         fromVideo.forEach(element => { element.pause() });
+        fromInput.value = '';
+        gsap.to(fromVideo, { autoAlpha: 0 })
+        gsap.to(fromVideo[0], { autoAlpha: 1 })
+        gsap.to(caseStudy, { backgroundColor: `#CCEF92` })
+        errorMessage.innerHTML = ``
     })
 
     let error = 0;
@@ -604,6 +625,9 @@ const videoWrapper = () => {
                     pinVideoEndVideo.play()
                     pinVideoEndVideo.currentTime = 0;
 
+                },
+                onLeaveBack: () => {
+                    pinVideoEndVideo.pause()
                 }
             }
         }).to(pinVideoEndVideo, { scale: 1 })
@@ -634,7 +658,7 @@ const videoWrapper = () => {
             scrollTrigger: {
                 trigger: pinVideoEnd,
                 endTrigger: pinVideoEnd,
-                // markers: true,
+                markers: true,
                 start: `top bottom`,
                 end: `bottom bottom`,
                 scrub: .4,
@@ -642,9 +666,35 @@ const videoWrapper = () => {
                     pinVideoEndVideo.play()
                     pinVideoEndVideo.currentTime = 0;
 
-                }
+                },
             }
         }).to(pinVideoEndVideo, { scale: 1 })
+
+
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: pinVideoEnd,
+                endTrigger: pinVideoEnd,
+                markers: true,
+                start: `top bottom`,
+                end: `bottom top`,
+                scrub: .4,
+
+                onEnterBack: () => {
+                    pinVideoEndVideo.play()
+                    pinVideoEndVideo.currentTime = 0;
+                },
+                onLeave: () => {
+                    pinVideoEndVideo.pause()
+                    pinVideoEndVideo.currentTime = 0;
+                },
+                onLeaveBack: () => {
+                    pinVideoEndVideo.pause()
+                    pinVideoEndVideo.currentTime = 0;
+                }
+            }
+        })
     }
 
 
@@ -931,11 +981,12 @@ const videoUnmuteAnimation = () => {
     });
 
     let muted = true;
+    gsap.set(videoAnimSpan, { yPercent: -50 })
     const pinVideoEndVideo = document.querySelector('.video-end video');
     pinVideoEndVideo.addEventListener('click', () => {
         muted = !muted
         pinVideoEndVideo.muted = muted;
-        gsap.to(videoAnimSpan, { yPercent: !muted ? -50 : 0 })
+        gsap.to(videoAnimSpan, { yPercent: muted ? -50 : 0 })
     })
 
     pinVideoEndVideo.addEventListener('mouseenter', () => {

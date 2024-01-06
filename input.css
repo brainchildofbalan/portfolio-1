@@ -141,3 +141,7 @@ html.lenis {
   .cursor-anim button{
     filter: invert(100%);
   }
+  .heading-item span,
+  .heading-item span span{
+    display: inline-block;
+  }
