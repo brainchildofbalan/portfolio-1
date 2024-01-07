@@ -138,6 +138,14 @@ html.lenis {
     mix-blend-mode: difference;
     
   }
+  .cursor-anim.mob{
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    left: auto;
+    right: 30px;
+    scale: .8;
+  }
   .cursor-anim button{
     filter: invert(100%);
   }

@@ -658,7 +658,7 @@ const videoWrapper = () => {
             scrollTrigger: {
                 trigger: pinVideoEnd,
                 endTrigger: pinVideoEnd,
-                markers: true,
+                // markers: true,
                 start: `top bottom`,
                 end: `bottom bottom`,
                 scrub: .4,
@@ -676,7 +676,7 @@ const videoWrapper = () => {
             scrollTrigger: {
                 trigger: pinVideoEnd,
                 endTrigger: pinVideoEnd,
-                markers: true,
+                // markers: true,
                 start: `top bottom`,
                 end: `bottom top`,
                 scrub: .4,
@@ -958,44 +958,60 @@ const sliderMentors = () => {
 const videoUnmuteAnimation = () => {
     const videoAnim = document.querySelector('.follow-animation-mouse');
     const videoAnimSpan = document.querySelector('.follow-animation-mouse button > span');
-    gsap.set(videoAnim, { xPercent: -50, yPercent: -50, opacity: 0 });
+    if (window.innerWidth > 767) {
+        gsap.set(videoAnim, { xPercent: -50, yPercent: -50, opacity: 0 });
 
-    const pos = { x: window.innerWidth, y: window.innerHeight };
-    const mouse = { x: pos.x, y: pos.y };
-    const speed = 0.35;
+        const pos = { x: window.innerWidth, y: window.innerHeight };
+        const mouse = { x: pos.x, y: pos.y };
+        const speed = 0.35;
 
-    const xSet = gsap.quickSetter(videoAnim, "x", "px");
-    const ySet = gsap.quickSetter(videoAnim, "y", "px");
+        const xSet = gsap.quickSetter(videoAnim, "x", "px");
+        const ySet = gsap.quickSetter(videoAnim, "y", "px");
 
-    window.addEventListener("mousemove", (e) => {
-        mouse.x = e.x;
-        mouse.y = e.y;
-    });
 
-    gsap.ticker.add(() => {
-        const dt = 0.8 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
-        pos.x += (mouse.x - pos.x) * dt;
-        pos.y += (mouse.y - pos.y) * dt;
-        xSet(pos.x);
-        ySet(pos.y);
-    });
 
-    let muted = true;
-    gsap.set(videoAnimSpan, { yPercent: -50 })
-    const pinVideoEndVideo = document.querySelector('.video-end video');
-    pinVideoEndVideo.addEventListener('click', () => {
-        muted = !muted
-        pinVideoEndVideo.muted = muted;
-        gsap.to(videoAnimSpan, { yPercent: muted ? -50 : 0 })
-    })
 
-    pinVideoEndVideo.addEventListener('mouseenter', () => {
-        gsap.to(videoAnim, { opacity: 1 });
-    })
+        window.addEventListener("mousemove", (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
 
-    pinVideoEndVideo.addEventListener('mouseleave', () => {
-        gsap.to(videoAnim, { opacity: 0 });
-    })
+        gsap.ticker.add(() => {
+            const dt = 0.8 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+            pos.x += (mouse.x - pos.x) * dt;
+            pos.y += (mouse.y - pos.y) * dt;
+            xSet(pos.x);
+            ySet(pos.y);
+        });
+
+        let muted = true;
+        gsap.set(videoAnimSpan, { yPercent: -50 })
+        const pinVideoEndVideo = document.querySelector('.video-end video');
+        pinVideoEndVideo.addEventListener('click', () => {
+            muted = !muted
+            pinVideoEndVideo.muted = muted;
+            gsap.to(videoAnimSpan, { yPercent: muted ? -50 : 0 })
+        })
+
+        pinVideoEndVideo.addEventListener('mouseenter', () => {
+            gsap.to(videoAnim, { opacity: 1 });
+        })
+
+        pinVideoEndVideo.addEventListener('mouseleave', () => {
+            gsap.to(videoAnim, { opacity: 0 });
+        })
+    } else {
+        let muted = true;
+        gsap.set(videoAnimSpan, { yPercent: -50 })
+        const pinVideoEndVideo = document.querySelector('.video-end video');
+        pinVideoEndVideo.addEventListener('click', () => {
+            muted = !muted
+            pinVideoEndVideo.muted = muted;
+            gsap.to(videoAnimSpan, { yPercent: muted ? -50 : 0 })
+        })
+        videoAnim.parentNode.classList.add('relative')
+        videoAnim.classList.add('mob')
+    }
 
 };
 
