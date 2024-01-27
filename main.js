@@ -369,7 +369,7 @@ const animPin = () => {
         scrollTrigger: {
             trigger: animPin2,
             pin: animPin3,
-            end: `145%`,
+            end: `165%`,
             // markers: true,
             pinSpacing: true,
         }
@@ -439,7 +439,7 @@ const parallaxAnimation = () => {
             }
         })
         // tlParallax.scrollTrigger.refresh()
-        tlParallax.to(itemAnim, { yPercent: 22, ease: Linear.easeNone })
+        tlParallax.to(itemAnim, { yPercent: 18, ease: Linear.easeNone })
 
         // document.addEventListener('DOMNodeInserted', tlParallax.scrollTrigger.refresh(), false)
         // document.addEventListener('DOMNodeRemoved', tlParallax.scrollTrigger.refresh(), false)
@@ -470,7 +470,7 @@ const formHandling = () => {
     const menuAnim = menuAnimation()
 
     fromVideo.forEach(element => {
-        element.volume = 0.1;
+        element.volume = 0.8;
     });
 
     caseStudyTrigger.addEventListener('click', (e) => {
@@ -598,6 +598,7 @@ const videoWrapper = () => {
     const pinVideoEnd = document.querySelector('.video-end');
     const pinVideoEndVideo = document.querySelector('.video-end video');
     pinVideoEndVideo.pause()
+    const videoControlls = document.querySelector('.pinVideo')
 
     if (window.innerWidth > 767) {
         gsap.timeline({
@@ -607,6 +608,7 @@ const videoWrapper = () => {
                 // markers: true,
                 start: `center center`,
                 end: `100%`,
+
             }
         })
 
@@ -621,14 +623,8 @@ const videoWrapper = () => {
                 start: `top-=30% center`,
                 end: `center center`,
                 scrub: .4,
-                onEnter: () => {
-                    pinVideoEndVideo.play()
-                    pinVideoEndVideo.currentTime = 0;
 
-                },
-                onLeaveBack: () => {
-                    pinVideoEndVideo.pause()
-                }
+
             }
         }).to(pinVideoEndVideo, { scale: 1 })
 
@@ -642,16 +638,35 @@ const videoWrapper = () => {
                 end: `130%  bottom`,
                 scrub: .4,
                 onEnterBack: () => {
-                    pinVideoEndVideo.play()
-                    pinVideoEndVideo.currentTime = 0;
+
                     ScrollTrigger.refresh();
                 },
-                onLeave: () => {
-                    pinVideoEndVideo.pause()
-                }
+
             }
         })
             .to(pinVideoEndVideo, { scale: .5 })
+
+        gsap.timeline({
+            scrollTrigger: {
+                // markers: true,
+                trigger: videoControlls,
+                onEnter: () => {
+                    pinVideoEndVideo.play()
+                    pinVideoEndVideo.currentTime = 0;
+                },
+                onLeave: () => {
+                    pinVideoEndVideo.pause()
+                },
+                onEnterBack: () => {
+                    pinVideoEndVideo.play()
+                    pinVideoEndVideo.currentTime = 0;
+                },
+                onLeaveBack: () => {
+                    pinVideoEndVideo.pause()
+                }
+
+            }
+        })
     }
     else {
         gsap.timeline({
@@ -1016,6 +1031,64 @@ const videoUnmuteAnimation = () => {
 };
 
 
+const menuLinks = () => {
+    const menuAnim = menuAnimation()
+    const menu_link = document.querySelectorAll('.menu-nav-link')
+    menu_link.forEach(element => {
+        const getAttrVal = element.getAttribute('href');
+        const linkClass = getAttrVal.replace("#", "");
+        console.log(linkClass)
+        element.addEventListener('click', (e) => {
+            e.preventDefault();
+            menuAnim.handleMenuClose();
+            window.lenis.scrollTo(`.${linkClass}`);
+        })
+
+    });
+}
+
+const lineAnim = () => {
+    const line1 = document.querySelector('.final-svg-line');
+    const line2 = document.querySelector('.final-svg-line-2');
+    const footer = document.querySelector('footer')
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: footer,
+            // markers: true,
+        }
+    })
+        .fromTo(line1, { '--line-anim': `${746}px` }, { '--line-anim': `${746 * 2}px` })
+        .fromTo(line2, { '--line-anim': `${40}px` }, { '--line-anim': `${40 * 2}px` })
+}
+
+
+const lazyVideo = () => {
+    var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+
+    if ("IntersectionObserver" in window) {
+        var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (video) {
+                if (video.isIntersecting) {
+                    for (var source in video.target.children) {
+                        var videoSource = video.target.children[source];
+                        if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                            videoSource.src = videoSource.dataset.src;
+                        }
+                    }
+
+                    video.target.load();
+                    video.target.classList.remove("lazy");
+                    lazyVideoObserver.unobserve(video.target);
+                }
+            });
+        });
+
+        lazyVideos.forEach(function (lazyVideo) {
+            lazyVideoObserver.observe(lazyVideo);
+        });
+    }
+}
+
 window.addEventListener("load", () => {
 
 
@@ -1044,9 +1117,10 @@ window.addEventListener("load", () => {
     window.addEventListener('resize', () => window.innerWidth < 1024 && sliderMentors())
 
     videoUnmuteAnimation();
+    menuLinks();
+    lineAnim()
 
-
-
+    lazyVideo();
 
 
 

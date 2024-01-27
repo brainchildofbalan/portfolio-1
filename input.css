@@ -153,3 +153,13 @@ html.lenis {
   .heading-item span span{
     display: inline-block;
   }
+
+
+  .final-svg-line{
+    stroke-dasharray: 746px;
+    stroke-dashoffset: var(--line-anim, 746px) ;
+  }
+  .final-svg-line-2{
+    stroke-dasharray: 40px;
+    stroke-dashoffset: var(--line-anim, 40px);
+  }
