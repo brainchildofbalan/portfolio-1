@@ -26,7 +26,7 @@ module.exports = {
         // 'mono': ['ui-monospace', 'SFMono-Regular',],
         // 'display': ['Oswald',],
         // 'body': ['"Work Sans"', '"Playfair Display"',],
-        'fly': ['"Playfair Display"', 'serif'],
+        'fly': ['"Fahkwang"', 'sans-serif'],
         'work': ['"Work Sans"', 'sans-serif'],
       }
     }

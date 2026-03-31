@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 
 
 const textSplitting = (element) => {
+    if (!element) return
     var text = element.innerText;
     var wordsArray = text.split(' ');
     var newHTMLContent = wordsArray.map(function (word) {
@@ -464,7 +465,7 @@ const formHandling = () => {
     const fromVideo = document.querySelectorAll('.video-items video');
     const caseStudy = document.querySelector('.case-study');
     const errorMessage = document.querySelector('.error-message');
-    const caseStudyTrigger = document.querySelector('.case-study-trigger');
+    const caseStudyTrigger = document.querySelectorAll('.case-study-trigger');
     const modelClose = document.querySelector('.model-close');
     const caseOverlay = document.querySelector('.case-overlay');
     const menuAnim = menuAnimation()
@@ -473,15 +474,17 @@ const formHandling = () => {
         element.volume = 0.8;
     });
 
-    caseStudyTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        gsap.to(caseStudy, { autoAlpha: 1, scale: 1, pointerEvents: 'all', duration: .3 })
-        gsap.to(caseOverlay, { autoAlpha: .3, pointerEvents: 'all', duration: .3 })
-        caseOverlay
-        fromVideo[0].play();
-        menuAnim.handleMenuClose()
-        window?.lenis?.stop();
-    })
+    caseStudyTrigger.forEach(element => {
+        element.addEventListener('click', (e) => {
+            e.preventDefault();
+            gsap.to(caseStudy, { autoAlpha: 1, scale: 1, pointerEvents: 'all', duration: .3 })
+            gsap.to(caseOverlay, { autoAlpha: .3, pointerEvents: 'all', duration: .3 })
+            caseOverlay
+            fromVideo[0].play();
+            menuAnim.handleMenuClose()
+            window?.lenis?.stop();
+        })
+    });
 
     modelClose.addEventListener('click', (e) => {
         e.preventDefault();
@@ -750,6 +753,7 @@ const loadingLetter = () => {
 
 
 
+    const videoBanner = document.querySelector('.videoBanner');
     const textMainWrap = document.querySelectorAll('.brak-text-into-multi-span > span');
     const textMainSpan = document.querySelectorAll('.brak-text-into-multi-span > span > span');
     const lineAnimFade = document.querySelector('.line-anim-fade');
@@ -785,7 +789,6 @@ const loadingLetter = () => {
                     gsap.to(svgMaskImg, {
                         scaleY: 0, transformOrigin: `top`, ease: Power4.easeOut, duration: 1.1, onComplete: () => {
                             window.lenis.start();
-
                         }
                     })
                     gsap.to(mainWrapper, {
@@ -795,9 +798,17 @@ const loadingLetter = () => {
                         }
                     })
 
-                    gsap.to(textMainSpan, { duration: 1.1, autoAlpha: 1, yPercent: -2, display: `inline-block`, stagger: .03, ease: Power2.easeOut })
+                    gsap.to(textMainSpan, { duration: 1.1, autoAlpha: 1, yPercent: -2, display: `inline-block`, stagger: .03, ease: Power2.easeOut, delay : .15 })
                     gsap.to(lineAnimFade, { duration: .6, y: 0, autoAlpha: 1, delay: .5 })
                     gsap.to(imageFade, { duration: .6, y: 0, autoAlpha: 1, delay: .65 })
+
+                    // Play and loop the banner video after loading completes
+                    if (videoBanner) {
+                        videoBanner.currentTime = 0;
+                        videoBanner.loop = true;
+                        videoBanner.muted = true;
+                        videoBanner.play().catch(() => {});
+                    }
 
                 }, 200);
             }
