@@ -460,32 +460,46 @@
             <div class="w-auto hidden lg:flex items-center">
               <ul class="flex items-center gap-[32px] py-[12px] md:py-[20px]">
                 <li>
-                  <a href="/" class="text-[14px] text-white hover:opacity-70 transition-opacity menu-nav-link">Home</a>
+                  <a
+                    href="/"
+                    class="text-[14px] text-white hover:opacity-70 transition-opacity menu-nav-link"
+                    >Home</a
+                  >
                 </li>
                 <li>
-                  <a href="#about" class="text-[14px] text-white hover:opacity-70 transition-opacity menu-nav-link">About US</a>
+                  <a
+                    href="#about"
+                    class="text-[14px] text-white hover:opacity-70 transition-opacity menu-nav-link"
+                    >About US</a
+                  >
                 </li>
                 <li>
-                  <a href="#fav-works" class="text-[14px] text-white hover:opacity-70 transition-opacity case-study-trigger">Work</a>
+                  <a
+                    href="#fav-works"
+                    class="text-[14px] text-white hover:opacity-70 transition-opacity case-study-trigger"
+                    >Work</a
+                  >
                 </li>
                 <li>
-                  <a href="#contact-now" class="text-[14px] text-white hover:opacity-70 transition-opacity menu-nav-link">Contact</a>
+                  <a
+                    href="#contact-now"
+                    class="text-[14px] text-white hover:opacity-70 transition-opacity menu-nav-link"
+                    >Contact</a
+                  >
                 </li>
               </ul>
             </div>
             <div class="w-auto items-center hidden lg:flex">
-              <ul
-                class="w-full flex items-start text-white gap-[29px]"
-              >
+              <ul class="w-full flex items-start text-white gap-[29px]">
                 <li>
                   <a
                     href="https://www.linkedin.com/in/gautham-%E2%9C%A6-ui-a6b0a3192/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                     target="_blank"
-                    class="w-full flex items-start transition-opacity hover:opacity-100"
+                    class="w-full flex items-start transition-opacity hover:opacity-80"
                   >
                     <span>
                       <figure>
-                        <img  src="./linkedin.svg" alt="" />
+                        <img src="./linkedin.svg" alt="" />
                       </figure>
                     </span>
                   </a>
@@ -494,11 +508,11 @@
                   <a
                     href="https://dribbble.com/Reghu"
                     target="_blank"
-                    class="w-full flex items-start transition-opacity hover:opacity-100"
+                    class="w-full flex items-start transition-opacity hover:opacity-80"
                   >
                     <span>
                       <figure>
-                        <img  src="./dribbble.svg" alt="" />
+                        <img src="./dribbble.svg" alt="" />
                       </figure>
                     </span>
                   </a>
@@ -507,11 +521,11 @@
                   <a
                     href="https://www.behance.net/gauthamreghu12?tracking_source=search_users%7Cgautham%20reghu"
                     target="_blank"
-                    class="w-full flex items-start transition-opacity hover:opacity-100"
+                    class="w-full flex items-start transition-opacity hover:opacity-80"
                   >
                     <span>
                       <figure>
-                        <img  src="./behance.svg" alt="" />
+                        <img src="./behance.svg" alt="" />
                       </figure>
                     </span>
                   </a>
@@ -520,11 +534,11 @@
                   <a
                     href="https://www.instagram.com/gautham_ui/"
                     target="_blank"
-                    class="w-full flex items-start transition-opacity hover:opacity-100"
+                    class="w-full flex items-start transition-opacity hover:opacity-80"
                   >
                     <span>
                       <figure>
-                        <img  src="./instagram.svg" alt="" />
+                        <img src="./instagram.svg" alt="" />
                       </figure>
                     </span>
                   </a>
@@ -628,28 +642,62 @@
     </header>
     <main>
       <!-- section banner -->
-      <section class="w-full relative text-white h-[100svh] bg-black flex flex-col justify-end pb-[10vh]">
-        <video 
-          src="./video/banner.mp4" 
-          loop 
-          muted 
-          class="absolute top-0 left-0 w-full h-full object-cover z-0 videoBanner"
-        ></video>
-        <span class="bg-gradient-to-t from-black to-transparent absolute bottom-0 left-0 z-1 h-[80%] w-full"></span>
-        <span class="bg-gradient-to-t from-transparent to-black absolute top-0 left-0 z-1 h-[40%] w-full opacity-80"></span>
-        <div class="container-custom relative z-3">
-          <div class="w-full relative">
-            <h1 class="text-[6.4vw] font-fly max-w-[69vw] leading-[1.12] brak-text-into-multi-span">I'm Gautham Reghu a UI Designer</h1>
-            <div
-                class="w-[83px] sm:w-[12.3vw] h-[83px]  sm:h-[12.3vw] absolute right-[14px] sm:right-[0.5vw] bottom-[50px] sm:bottom-[1vw] invert"
-              >
+      <section
+        class="w-full videoBanner-wrapper relative text-white h-[100svh] bg-black flex flex-col justify-end pb-[10vh]"
+      >
+        <div
+          class="backdrop-blur-sm overflow-hidden rounded-full absolute follow-animation-mouse-banner flex items-center justify-center cursor-anim-banner z-4"
+        >
+          <button class="w-[20px] h-[20px] flex overflow-hidden">
+            <span class="w-[20px] h-[40px] flex flex-col">
+              <span class="w-[20px] h-[20px] relative">
                 <img
                   loading="lazy"
-                  src="./rotate-img-banner.svg"
-                  class="w-full absolute rotate-anim will-change-transform"
+                  src="./unmute.svg"
+                  class="w-full h-full object-contain absolute"
                   alt=""
                 />
-              </div>
+              </span>
+              <span class="w-[20px] h-[20px] relative">
+                <img
+                  loading="lazy"
+                  src="./muted.svg"
+                  class="w-full h-full object-contain absolute"
+                  alt=""
+                />
+              </span>
+            </span>
+          </button>
+        </div>
+        <video
+          src="./video/banner.mp4"
+          loop
+          muted
+          class="absolute top-0 left-0 w-full h-full object-cover z-0 videoBanner"
+        ></video>
+        <span
+          class="bg-gradient-to-t from-black to-transparent absolute bottom-0 left-0 z-1 h-[80%] w-full"
+        ></span>
+        <span
+          class="bg-gradient-to-t from-transparent to-black absolute top-0 left-0 z-1 h-[40%] w-full opacity-80"
+        ></span>
+        <div class="container-custom relative z-3">
+          <div class="w-full relative">
+            <h1
+              class="text-[6.4vw] font-fly max-w-[69vw] leading-[1.12] brak-text-into-multi-span"
+            >
+              I'm Gautham Reghu a UI Designer
+            </h1>
+            <div
+              class="w-[83px] sm:w-[12.3vw] h-[83px] sm:h-[12.3vw] absolute right-[14px] sm:right-[0.5vw] bottom-[50px] sm:bottom-[1vw] invert"
+            >
+              <img
+                loading="lazy"
+                src="./rotate-img-banner.svg"
+                class="w-full absolute rotate-anim will-change-transform"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -727,17 +775,15 @@
                     alt=""
                     class="absolute left-0 top-0 w-full h-full pointer-events-none"
                   />
-
-                  <img
-                    loading="lazy"
-                    src="./work-set-3/4.jpg"
-                    alt=""
-                    class="absolute left-0 top-0 w-full h-full pointer-events-none"
-                  />
-
                   <img
                     loading="lazy"
                     src="./work-set-3/2.jpg"
+                    alt=""
+                    class="absolute left-0 top-0 w-full h-full pointer-events-none"
+                  />
+                  <img
+                    loading="lazy"
+                    src="./work-set-3/4.jpg"
                     alt=""
                     class="absolute left-0 top-0 w-full h-full pointer-events-none"
                   />
@@ -779,6 +825,53 @@
                         class="text-[14px] md:text-[1.25vw] text-anim md:opacity-40 pt-[75px] md:pt-0"
                       >
                         Website
+                      </button>
+
+                      <span
+                        class="w-[32px] h-[32px] md:w-[40px] md:h-[40px] mt-[20px] md:mt-0 absolute right-0 rounded-full bg-[#171612] flex items-center justify-center md:scale-0 arrow-anim will-change-transform origin-right"
+                      >
+                        <img
+                          loading="lazy"
+                          src="./arrow-right-top.svg"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </div>
+
+                  <span
+                    class="absolute w-full h-[1px] md:h-[2px] bg-black bottom-0 line-separator"
+                  ></span>
+                </a>
+                <a
+                  href="https://www.behance.net/gallery/245943383/UI-Practice-Experiments"
+                  target="_blank"
+                  class="w-full flex py-[20px] md:py-[1.818vw] relative items-anim-work hover-anim flex-col md:flex-row fade-anim-mob"
+                >
+                  <div class="w-full md:max-w-[28.6%]">
+                    <h4
+                      class="font-fly text-[28px] md:text-[2.68vw] heading-item"
+                    >
+                      Cab booking
+                    </h4>
+                  </div>
+
+                  <div
+                    class="w-full md:max-w-[71.4%] flex justify-between items-center pl-[153px] md:pl-0 mt-[20px] md:mt-0"
+                  >
+                    <div
+                      class="w-auto text-[14px] md:text-[1.25vw] md:uppercase context-anim md:opacity-40"
+                    >
+                      Visual Design / UX / Branding
+                    </div>
+
+                    <div
+                      class="w-full h-full md:w-auto md:relative flex items-start md:items-center absolute left-0 top-0"
+                    >
+                      <button
+                        class="text-[14px] md:text-[1.25vw] text-anim md:opacity-40 pt-[75px] md:pt-0"
+                      >
+                        mobile app
                       </button>
 
                       <span
@@ -845,53 +938,7 @@
                     class="absolute w-full h-[1px] md:h-[2px] bg-black bottom-0 line-separator"
                   ></span>
                 </a>
-                <a
-                  href="https://www.behance.net/gallery/245943383/UI-Practice-Experiments"
-                  target="_blank"
-                  class="w-full flex py-[20px] md:py-[1.818vw] relative items-anim-work hover-anim flex-col md:flex-row fade-anim-mob"
-                >
-                  <div class="w-full md:max-w-[28.6%]">
-                    <h4
-                      class="font-fly text-[28px] md:text-[2.68vw] heading-item"
-                    >
-                      Cab booking
-                    </h4>
-                  </div>
 
-                  <div
-                    class="w-full md:max-w-[71.4%] flex justify-between items-center pl-[153px] md:pl-0 mt-[20px] md:mt-0"
-                  >
-                    <div
-                      class="w-auto text-[14px] md:text-[1.25vw] md:uppercase context-anim md:opacity-40"
-                    >
-                      Visual Design / UX / Branding
-                    </div>
-
-                    <div
-                      class="w-full h-full md:w-auto md:relative flex items-start md:items-center absolute left-0 top-0"
-                    >
-                      <button
-                        class="text-[14px] md:text-[1.25vw] text-anim md:opacity-40 pt-[75px] md:pt-0"
-                      >
-                        mobile app
-                      </button>
-
-                      <span
-                        class="w-[32px] h-[32px] md:w-[40px] md:h-[40px] mt-[20px] md:mt-0 absolute right-0 rounded-full bg-[#171612] flex items-center justify-center md:scale-0 arrow-anim will-change-transform origin-right"
-                      >
-                        <img
-                          loading="lazy"
-                          src="./arrow-right-top.svg"
-                          alt=""
-                        />
-                      </span>
-                    </div>
-                  </div>
-
-                  <span
-                    class="absolute w-full h-[1px] md:h-[2px] bg-black bottom-0 line-separator"
-                  ></span>
-                </a>
                 <a
                   href="https://g24.health/en/home/"
                   target="_blank"
@@ -1965,7 +2012,7 @@
         <div class="w-full relative">
           <div class="w-full fade-anim-mob">
             <h3
-              class="text-[#EAE9E6] text-[48px] md:text-[7.266vw] font-fly max-w-[267px] md:max-w-[40vw] leading-[1.1]"
+              class="text-[#EAE9E6] text-[48px] md:text-[6.266vw] font-fly max-w-[267px] md:max-w-[40vw] leading-[1.1]"
             >
               Want to reach out?
             </h3>
@@ -2214,5 +2261,5 @@
     </div>
     <!-- case study popup end -->
   </body>
-  <script src="./main.js?v=1.1" type="module"></script>
+  <script src="./main.js" type="module"></script>
 </html>

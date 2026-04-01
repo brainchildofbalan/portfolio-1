@@ -149,6 +149,32 @@ html.lenis {
   .cursor-anim button{
     filter: invert(100%);
   }
+  .cursor-anim-banner{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1050;
+    will-change: transform;
+    transition-property: transform;
+    transition: height 0.5s ease-out, background-color 0.5s ease, width 0.5s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-anim-banner.mob{
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    left: auto;
+    right: 30px;
+    scale: .8;
+  }
+  .cursor-anim-banner button{
+    filter: invert(100%);
+  }
   .heading-item span,
   .heading-item span span{
     display: inline-block;

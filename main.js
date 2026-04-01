@@ -981,6 +981,67 @@ const sliderMentors = () => {
 }
 
 
+const bannerVideoUnmuteAnimation = () => {
+    const videoAnim = document.querySelector('.follow-animation-mouse-banner');
+    const videoAnimSpan = document.querySelector('.follow-animation-mouse-banner button > span');
+    const videoBanner = document.querySelector('.videoBanner');
+    const videoBannerWrapper = document.querySelector('.videoBanner-wrapper');
+    
+
+    if (window.innerWidth > 767) {
+        gsap.set(videoAnim, { xPercent: -50, yPercent: -50, opacity: 0 });
+
+        const pos = { x: window.innerWidth, y: window.innerHeight };
+        const mouse = { x: pos.x, y: pos.y };
+        const speed = 0.35;
+
+        const xSet = gsap.quickSetter(videoAnim, "x", "px");
+        const ySet = gsap.quickSetter(videoAnim, "y", "px");
+
+        window.addEventListener("mousemove", (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        gsap.ticker.add(() => {
+            const dt = 0.8 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+            pos.x += (mouse.x - pos.x) * dt;
+            pos.y += (mouse.y - pos.y) * dt;
+            xSet(pos.x);
+            ySet(pos.y);
+        });
+
+        let muted = true;
+        gsap.set(videoAnimSpan, { yPercent: -50 });
+
+        videoBannerWrapper.addEventListener('click', () => {
+            muted = !muted;
+            videoBanner.muted = muted;
+            gsap.to(videoAnimSpan, { yPercent: muted ? -50 : 0 });
+        });
+
+        videoBannerWrapper.addEventListener('mouseenter', () => {
+            gsap.to(videoAnim, { opacity: 1 });
+        });
+
+        videoBannerWrapper.addEventListener('mouseleave', () => {
+            gsap.to(videoAnim, { opacity: 0 });
+        });
+    } else {
+        let muted = true;
+        gsap.set(videoAnimSpan, { yPercent: -50 });
+
+        videoBannerWrapper.addEventListener('click', () => {
+            muted = !muted;
+            videoBanner.muted = muted;
+            gsap.to(videoAnimSpan, { yPercent: muted ? -50 : 0 });
+        });
+
+        videoAnim.parentNode.classList.add('relative');
+        videoAnim.classList.add('mob');
+    }
+};
+
 const videoUnmuteAnimation = () => {
     const videoAnim = document.querySelector('.follow-animation-mouse');
     const videoAnimSpan = document.querySelector('.follow-animation-mouse button > span');
@@ -1128,6 +1189,7 @@ window.addEventListener("load", () => {
     window.addEventListener('resize', () => window.innerWidth < 1024 && sliderMentors())
 
     videoUnmuteAnimation();
+    bannerVideoUnmuteAnimation();
     menuLinks();
     lineAnim()
 
